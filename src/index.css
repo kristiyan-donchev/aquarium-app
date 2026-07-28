@@ -390,6 +390,106 @@ body {
   margin-top: 32px;
 }
 
+/* Account bar (header) */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.account-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.account-email {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.account-bar .secondary-button {
+  width: auto;
+}
+
+/* Auth screen */
+.auth-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.auth-panel {
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-panel h1 {
+  margin: 0 0 4px;
+  font-size: 24px;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.auth-form input {
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--panel-bg);
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.error-banner {
+  background: #fdecec;
+  color: #a3231b;
+  border: 1px solid #f5c2c2;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  margin: 0;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
@@ -455,5 +555,11 @@ body {
 
   .secondary-button:hover {
     background: #1c2e31;
+  }
+
+  .error-banner {
+    background: #3b1414;
+    color: #f87171;
+    border-color: #5c1f1f;
   }
 }

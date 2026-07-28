@@ -1,4 +1,5 @@
-const STORAGE_KEY = 'aquarium-catalog:my-tank:v1';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db } from './firebase.js';
 
 export const defaultTank = {
   stockedIds: [],
@@ -17,21 +18,28 @@ export const defaultTank = {
   },
 };
 
-export function loadTank() {
+function tankDocRef(uid) {
+  return doc(db, 'tanks', uid);
+}
+
+function normalizeTank(parsed) {
+  return {
+    ...structuredClone(defaultTank),
+    ...parsed,
+    customParams: { ...structuredClone(defaultTank.customParams), ...(parsed?.customParams || {}) },
+  };
+}
+
+export async function loadTank(uid) {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return structuredClone(defaultTank);
-    const parsed = JSON.parse(raw);
-    return {
-      ...structuredClone(defaultTank),
-      ...parsed,
-      customParams: { ...structuredClone(defaultTank.customParams), ...(parsed.customParams || {}) },
-    };
+    const snap = await getDoc(tankDocRef(uid));
+    if (!snap.exists()) return structuredClone(defaultTank);
+    return normalizeTank(snap.data());
   } catch {
     return structuredClone(defaultTank);
   }
 }
 
-export function saveTank(tank) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(tank));
+export async function saveTank(uid, tank) {
+  await setDoc(tankDocRef(uid), tank);
 }

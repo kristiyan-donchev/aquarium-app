@@ -26,7 +26,9 @@ parameter conflicts spelled out, not just a yes/no.
 - **Recommendations** — every other catalog species, evaluated against your tank and sorted into
   **Compatible**, **Compatible with caution**, and **Not compatible**, each with the specific
   reasons (which parameter conflicted, which existing tankmate is a problem and why).
-- **Persists locally** in your browser's `localStorage` — no account, no server, no database.
+- **Accounts required** — sign up or log in (email/password or Google) to use the app. Your tank is
+  saved to your account in Firestore, so it follows you across browsers/devices instead of living in
+  one browser's `localStorage`.
 
 ## How the compatibility algorithm works
 
@@ -71,34 +73,73 @@ complete stocking-plan tool.
 ## Tech stack
 
 - **React 18 + Vite**, plain CSS (light/dark aware).
-- **Persistence:** browser `localStorage` only — no backend, no accounts. The whole catalog is a
-  static JS module ([`src/data/species.js`](src/data/species.js)), so this is a fully static,
-  client-only app.
+- **Auth + persistence:** [Firebase Authentication](https://firebase.google.com/docs/auth) (email/password
+  and Google sign-in) and [Cloud Firestore](https://firebase.google.com/docs/firestore) for storing
+  each user's tank, keyed by their user ID. The species catalog itself is still a static JS module
+  ([`src/data/species.js`](src/data/species.js)) — only "My Tank" is backed by the database.
 
 ## Project structure
 
 ```
 aquarium-catalog/
 ├── src/
-│   ├── data/species.js        # the species catalog (dataset)
-│   ├── lib/compatibility.js   # target-parameter inference + compatibility algorithm
-│   ├── lib/storage.js         # localStorage load/save for "My Tank"
-│   ├── components/            # CatalogBrowser, MyTank, Recommendations, SpeciesCard, Header
-│   └── App.jsx                # tab navigation + top-level state
+│   ├── data/species.js          # the species catalog (dataset)
+│   ├── lib/compatibility.js     # target-parameter inference + compatibility algorithm
+│   ├── lib/firebase.js          # Firebase app/auth/Firestore initialization
+│   ├── lib/storage.js           # Firestore load/save for "My Tank", keyed by user uid
+│   ├── context/AuthContext.jsx  # auth state + signUp/logIn/logInWithGoogle/logOut
+│   ├── components/              # CatalogBrowser, MyTank, Recommendations, SpeciesCard,
+│   │                            # Header, AuthScreen (login/signup gate)
+│   └── App.jsx                  # auth gate + tab navigation + top-level state
+├── firestore.rules              # security rules: a user may only read/write their own tank doc
 └── index.html
 ```
 
 ## Setup & running locally
 
-Requires [Node.js](https://nodejs.org/) 18+ and npm.
+Requires [Node.js](https://nodejs.org/) 18+ and npm, plus a free [Firebase](https://firebase.google.com/)
+project.
+
+### 1. Create a Firebase project
+
+1. Go to the [Firebase console](https://console.firebase.google.com/) and create a new project
+   (Google Analytics is not needed).
+2. **Add a web app** to the project (the `</>` icon on the project overview page) and copy the
+   `firebaseConfig` values it gives you.
+3. **Enable Authentication:** in the console, go to *Build → Authentication → Sign-in method* and
+   enable the **Email/Password** and **Google** providers.
+4. **Enable Firestore:** go to *Build → Firestore Database → Create database* (production mode is
+   fine — the rules below lock it down).
+5. **Apply the security rules** in [`firestore.rules`](firestore.rules) (paste them into
+   *Firestore Database → Rules* in the console, or deploy with the Firebase CLI). They restrict each
+   `tanks/{userId}` document so only the matching signed-in user can read or write it.
+
+### 2. Configure the app
+
+```bash
+cp .env.example .env
+```
+
+Fill in `.env` with the `firebaseConfig` values from step 1:
+
+```
+VITE_FIREBASE_API_KEY=...
+VITE_FIREBASE_AUTH_DOMAIN=...
+VITE_FIREBASE_PROJECT_ID=...
+VITE_FIREBASE_STORAGE_BUCKET=...
+VITE_FIREBASE_MESSAGING_SENDER_ID=...
+VITE_FIREBASE_APP_ID=...
+```
+
+### 3. Run it
 
 ```bash
 npm install
 npm run dev
 ```
 
-This starts the Vite dev server, by default at `http://localhost:5173`. Open that URL in your
-browser.
+This starts the Vite dev server, by default at `http://localhost:5173`. Open that URL, create an
+account (or sign in with Google), and start building your tank — it's saved to your account.
 
 **Production build:**
 
@@ -116,8 +157,8 @@ npm run preview
   attempt.
 - **27 species, not exhaustive.** This covers commonly-kept community freshwater species, not every
   fish/plant/invert in the hobby.
-- **No accounts, no sync.** "My Tank" lives in your browser's `localStorage` for one browser/profile
-  — clearing site data or switching browsers will reset it.
+- **Requires a Firebase project.** There's no shared/hosted backend — each deployment needs its own
+  Firebase project (free tier is enough) configured as described above.
 - Doesn't model bioload/filtration limits, CO2/fertilization interactions for plants, or
   tank-specific social hierarchies — see the compatibility algorithm section above for exactly what
   it does and doesn't check.

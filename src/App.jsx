@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from './components/Header.jsx';
 import CatalogBrowser from './components/CatalogBrowser.jsx';
 import MyTank from './components/MyTank.jsx';
 import Recommendations from './components/Recommendations.jsx';
-import { loadTank, saveTank } from './lib/storage.js';
+import AuthScreen from './components/AuthScreen.jsx';
+import { useAuth } from './context/AuthContext.jsx';
+import { loadTank, saveTank, defaultTank } from './lib/storage.js';
 
 const TABS = [
   { id: 'catalog', label: 'Catalog' },
@@ -12,12 +14,40 @@ const TABS = [
 ];
 
 export default function App() {
+  const { user, authLoading } = useAuth();
   const [tab, setTab] = useState('catalog');
-  const [tank, setTank] = useState(() => loadTank());
+  const [tank, setTank] = useState(defaultTank);
+  const [tankLoading, setTankLoading] = useState(true);
+  const skipNextSave = useRef(false);
+  const saveTimeout = useRef(null);
 
   useEffect(() => {
-    saveTank(tank);
-  }, [tank]);
+    if (!user) return;
+    let cancelled = false;
+    setTankLoading(true);
+    loadTank(user.uid).then((loaded) => {
+      if (cancelled) return;
+      skipNextSave.current = true;
+      setTank(loaded);
+      setTankLoading(false);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
+
+  useEffect(() => {
+    if (!user || tankLoading) return;
+    if (skipNextSave.current) {
+      skipNextSave.current = false;
+      return;
+    }
+    clearTimeout(saveTimeout.current);
+    saveTimeout.current = setTimeout(() => {
+      saveTank(user.uid, tank);
+    }, 500);
+    return () => clearTimeout(saveTimeout.current);
+  }, [tank, user, tankLoading]);
 
   function addToTank(speciesId) {
     setTank((prev) =>
@@ -29,6 +59,27 @@ export default function App() {
 
   function removeFromTank(speciesId) {
     setTank((prev) => ({ ...prev, stockedIds: prev.stockedIds.filter((id) => id !== speciesId) }));
+  }
+
+  if (authLoading) {
+    return (
+      <div className="app">
+        <p className="empty-state">Loading…</p>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return <AuthScreen />;
+  }
+
+  if (tankLoading) {
+    return (
+      <div className="app">
+        <Header />
+        <p className="empty-state">Loading your tank…</p>
+      </div>
+    );
   }
 
   return (

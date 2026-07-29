@@ -208,6 +208,43 @@ body {
   background: var(--bg);
 }
 
+.image-credit {
+  margin: 4px 0 0;
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.image-credit a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.credits-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.credits-table th,
+.credits-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.credits-table th {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.credits-table a {
+  color: var(--primary);
+}
+
 .species-card-top {
   display: flex;
   justify-content: space-between;

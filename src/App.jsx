@@ -5,6 +5,7 @@ import MyTank from './components/MyTank.jsx';
 import Recommendations from './components/Recommendations.jsx';
 import AuthScreen from './components/AuthScreen.jsx';
 import TankSwitcher from './components/TankSwitcher.jsx';
+import Credits from './components/Credits.jsx';
 import { useAuth } from './context/AuthContext.jsx';
 import { listTanks, createTank, renameTank, deleteTank, saveTank } from './lib/storage.js';
 
@@ -12,6 +13,7 @@ const TABS = [
   { id: 'catalog', label: 'Catalog' },
   { id: 'tank', label: 'My Tank' },
   { id: 'recommendations', label: 'Recommendations' },
+  { id: 'credits', label: 'Credits' },
 ];
 
 export default function App() {
@@ -141,6 +143,7 @@ export default function App() {
       {tab === 'catalog' && <CatalogBrowser tank={activeTank} onAdd={addToTank} onRemove={removeFromTank} />}
       {tab === 'tank' && <MyTank tank={activeTank} setTank={updateActiveTank} onRemove={removeFromTank} />}
       {tab === 'recommendations' && <Recommendations tank={activeTank} onAdd={addToTank} />}
+      {tab === 'credits' && <Credits />}
 
       <footer className="app-footer">
         <p>

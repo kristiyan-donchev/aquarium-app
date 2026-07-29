@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { categoryLabels } from '../data/species.js';
+import { imageCredits } from '../data/imageCredits.js';
 
 const STATUS_LABEL = {
   compatible: 'Compatible',
@@ -10,17 +11,36 @@ const STATUS_LABEL = {
 export default function SpeciesCard({ sp, inTank, onAdd, onRemove, status, reasons }) {
   const [expanded, setExpanded] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
+  const credit = imageCredits[sp.id];
 
   return (
     <div className={`species-card${status ? ` status-${status}` : ''}`}>
       {sp.imageUrl && !imageFailed && (
-        <img
-          className="species-image"
-          src={sp.imageUrl}
-          alt={sp.name}
-          loading="lazy"
-          onError={() => setImageFailed(true)}
-        />
+        <>
+          <img
+            className="species-image"
+            src={sp.imageUrl}
+            alt={sp.name}
+            loading="lazy"
+            onError={() => setImageFailed(true)}
+          />
+          {credit && (
+            <p className="image-credit">
+              Photo: {credit.author} /{' '}
+              {credit.licenseUrl ? (
+                <a href={credit.licenseUrl} target="_blank" rel="noopener noreferrer">
+                  {credit.license}
+                </a>
+              ) : (
+                credit.license
+              )}
+              , via{' '}
+              <a href={credit.sourceUrl} target="_blank" rel="noopener noreferrer">
+                Wikimedia Commons
+              </a>
+            </p>
+          )}
+        </>
       )}
       <div className="species-card-top">
         <div>

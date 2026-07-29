@@ -166,6 +166,24 @@ to `master`. To point this at your own fork/Firebase project:
 3. In the Firebase console, go to **Authentication → Settings → Authorized domains** and add your
    `<username>.github.io` domain, or sign-in will be rejected from the hosted site.
 
+## Image licensing
+
+Every species photo comes from [Wikimedia Commons](https://commons.wikimedia.org), fetched via
+Wikipedia/Commons' public APIs (real, verified file URLs — not guessed) rather than photographed or
+generated for this app. Each photo is used under whatever Creative Commons or public-domain license
+its original contributor published it under; nothing here claims copyright over the photos
+themselves.
+
+- Attribution (author + license + source link) is baked in two places: a small caption under every
+  photo in the catalog, and the full list on the in-app **Credits** tab
+  ([`src/components/Credits.jsx`](src/components/Credits.jsx)).
+- The source-of-truth mapping is [`src/data/imageCredits.js`](src/data/imageCredits.js) — regenerate
+  it if you swap in different images (see the `id → {author, license, licenseUrl, sourceUrl}` shape).
+- Licenses in use across the current set: public domain, CC0, CC BY, and CC BY-SA (2.5–4.0). CC
+  BY-SA requires that *modified/derivative versions of the image itself* carry a compatible license;
+  it does not require the surrounding app or its code to be CC-licensed. If you plan to monetize a
+  fork of this app, get your own legal sign-off rather than relying on this note.
+
 ## Limitations
 
 - **Freshwater-only starter dataset.** The schema supports `waterType: 'brackish' | 'saltwater'`

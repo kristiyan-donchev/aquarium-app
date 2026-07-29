@@ -1,5 +1,7 @@
 # Aquarium Catalog
 
+**Live:** https://kristiyan-donchev.github.io/aquarium-app/
+
 A freshwater aquarium **species catalog and tank-compatibility tool**. Browse a curated database of
 fish, shrimp, snails, and plants with their real water-parameter needs, build a "My Tank" list of
 what you keep, and get compatibility recommendations for what to add next — with the actual
@@ -147,6 +149,18 @@ account (or sign in with Google), and start building your tank — it's saved to
 npm run build
 npm run preview
 ```
+
+## Deployment
+
+The app is hosted on **GitHub Pages** at https://kristiyan-donchev.github.io/aquarium-app/, built and
+deployed automatically by [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) on every push
+to `master`. To point this at your own fork/Firebase project:
+
+1. In the repo's **Settings → Pages**, set **Source** to **GitHub Actions**.
+2. In **Settings → Secrets and variables → Actions**, add the same 6 `VITE_FIREBASE_*` values from
+   your `.env` as repository secrets (the workflow injects them at build time).
+3. In the Firebase console, go to **Authentication → Settings → Authorized domains** and add your
+   `<username>.github.io` domain, or sign-in will be rejected from the hosted site.
 
 ## Limitations
 

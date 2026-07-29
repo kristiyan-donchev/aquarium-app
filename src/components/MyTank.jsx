@@ -32,7 +32,7 @@ export default function MyTank({ tank, setTank, onRemove }) {
 
   return (
     <div className="panel">
-      <h2>My Tank</h2>
+      <h2>{tank.name}</h2>
 
       <section>
         <h3>Stocked species ({stocked.length})</h3>

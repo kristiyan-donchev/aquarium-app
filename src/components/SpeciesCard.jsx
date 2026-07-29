@@ -9,9 +9,19 @@ const STATUS_LABEL = {
 
 export default function SpeciesCard({ sp, inTank, onAdd, onRemove, status, reasons }) {
   const [expanded, setExpanded] = useState(false);
+  const [imageFailed, setImageFailed] = useState(false);
 
   return (
     <div className={`species-card${status ? ` status-${status}` : ''}`}>
+      {sp.imageUrl && !imageFailed && (
+        <img
+          className="species-image"
+          src={sp.imageUrl}
+          alt={sp.name}
+          loading="lazy"
+          onError={() => setImageFailed(true)}
+        />
+      )}
       <div className="species-card-top">
         <div>
           <div className="species-name">{sp.name}</div>

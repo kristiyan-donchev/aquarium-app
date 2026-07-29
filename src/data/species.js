@@ -21,6 +21,7 @@ export const species = [
   // ---------------------------------------------------------------- FISH ----------------------------------------------------------------
   {
     id: 'betta',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/HM_Orange_M_Sarawut.jpg/330px-HM_Orange_M_Sarawut.jpg',
     name: 'Betta',
     scientificName: 'Betta splendens',
     category: 'fish',
@@ -43,6 +44,7 @@ export const species = [
   },
   {
     id: 'neon-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Neonsalmler_Paracheirodon_innesi.jpg/330px-Neonsalmler_Paracheirodon_innesi.jpg',
     name: 'Neon Tetra',
     scientificName: 'Paracheirodon innesi',
     category: 'fish',
@@ -65,6 +67,7 @@ export const species = [
   },
   {
     id: 'cardinal-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Cardinal_Paracheirodon_axelrodi_%283%29.jpg/330px-Cardinal_Paracheirodon_axelrodi_%283%29.jpg',
     name: 'Cardinal Tetra',
     scientificName: 'Paracheirodon axelrodi',
     category: 'fish',
@@ -87,6 +90,7 @@ export const species = [
   },
   {
     id: 'ember-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Hyphessobrycon_amandae_A.jpg/330px-Hyphessobrycon_amandae_A.jpg',
     name: 'Ember Tetra',
     scientificName: 'Hyphessobrycon amandae',
     category: 'fish',
@@ -109,6 +113,7 @@ export const species = [
   },
   {
     id: 'guppy',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Guppy_pho_0048.jpg/330px-Guppy_pho_0048.jpg',
     name: 'Guppy',
     scientificName: 'Poecilia reticulata',
     category: 'fish',
@@ -131,6 +136,7 @@ export const species = [
   },
   {
     id: 'endlers-livebearer',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Poecilia_wingei_Campoma_male_021en_20130303.jpg/330px-Poecilia_wingei_Campoma_male_021en_20130303.jpg',
     name: "Endler's Livebearer",
     scientificName: 'Poecilia wingei',
     category: 'fish',
@@ -153,6 +159,7 @@ export const species = [
   },
   {
     id: 'platy',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Rainbow_wag_platy.jpg/330px-Rainbow_wag_platy.jpg',
     name: 'Platy',
     scientificName: 'Xiphophorus maculatus',
     category: 'fish',
@@ -175,6 +182,7 @@ export const species = [
   },
   {
     id: 'molly',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Poecilia_sphenops%2C_Florida%2C_US_imported_from_iNaturalist_photo_487744119.jpeg/330px-Poecilia_sphenops%2C_Florida%2C_US_imported_from_iNaturalist_photo_487744119.jpeg',
     name: 'Molly',
     scientificName: 'Poecilia sphenops',
     category: 'fish',
@@ -197,6 +205,7 @@ export const species = [
   },
   {
     id: 'corydoras',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Corydoras_aeneus_2.jpg/330px-Corydoras_aeneus_2.jpg',
     name: 'Corydoras (Bronze Cory)',
     scientificName: 'Corydoras aeneus',
     category: 'fish',
@@ -219,6 +228,7 @@ export const species = [
   },
   {
     id: 'kuhli-loach',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Pangio_kuhlii.jpg/330px-Pangio_kuhlii.jpg',
     name: 'Kuhli Loach',
     scientificName: 'Pangio kuhlii',
     category: 'fish',
@@ -241,6 +251,7 @@ export const species = [
   },
   {
     id: 'zebra-danio',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Zebrafisch.jpg/330px-Zebrafisch.jpg',
     name: 'Zebra Danio',
     scientificName: 'Danio rerio',
     category: 'fish',
@@ -263,6 +274,7 @@ export const species = [
   },
   {
     id: 'cherry-barb',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Male_Cherry_Barb_700.jpg/330px-Male_Cherry_Barb_700.jpg',
     name: 'Cherry Barb',
     scientificName: 'Puntius titteya',
     category: 'fish',
@@ -285,6 +297,7 @@ export const species = [
   },
   {
     id: 'tiger-barb',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Tiger_barb_fish.jpg/330px-Tiger_barb_fish.jpg',
     name: 'Tiger Barb',
     scientificName: 'Puntius tetrazona',
     category: 'fish',
@@ -307,6 +320,7 @@ export const species = [
   },
   {
     id: 'angelfish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Pterophyllum_scalare_Natural_History_Museum_University_of_Pisa.jpg/330px-Pterophyllum_scalare_Natural_History_Museum_University_of_Pisa.jpg',
     name: 'Angelfish',
     scientificName: 'Pterophyllum scalare',
     category: 'fish',
@@ -329,6 +343,7 @@ export const species = [
   },
   {
     id: 'bristlenose-pleco',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ancistrus_sp._%28aka%29.jpg/330px-Ancistrus_sp._%28aka%29.jpg',
     name: 'Bristlenose Pleco',
     scientificName: 'Ancistrus sp.',
     category: 'fish',
@@ -351,6 +366,7 @@ export const species = [
   },
   {
     id: 'otocinclus',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Otocinclus_arnoldi_%281%29.JPG/330px-Otocinclus_arnoldi_%281%29.JPG',
     name: 'Otocinclus',
     scientificName: 'Otocinclus sp.',
     category: 'fish',
@@ -375,6 +391,7 @@ export const species = [
   // -------------------------------------------------------------- SHRIMP ---------------------------------------------------------------
   {
     id: 'amano-shrimp',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Amano_Garnele_%2885281493%29.jpeg/330px-Amano_Garnele_%2885281493%29.jpeg',
     name: 'Amano Shrimp',
     scientificName: 'Caridina multidentata',
     category: 'shrimp',
@@ -397,6 +414,7 @@ export const species = [
   },
   {
     id: 'cherry-shrimp',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Red_Cherry_Shrimp_1.jpg/330px-Red_Cherry_Shrimp_1.jpg',
     name: 'Cherry Shrimp',
     scientificName: 'Neocaridina davidi',
     category: 'shrimp',
@@ -421,6 +439,7 @@ export const species = [
   // --------------------------------------------------------------- SNAILS --------------------------------------------------------------
   {
     id: 'nerite-snail',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Naturalis_Biodiversity_Center_-_RMNH.MOL.151741_-_Vittina_natalensis_%28Reeve%2C_1855%29_-_Neritidae_-_Mollusc_shell.jpeg/330px-Naturalis_Biodiversity_Center_-_RMNH.MOL.151741_-_Vittina_natalensis_%28Reeve%2C_1855%29_-_Neritidae_-_Mollusc_shell.jpeg',
     name: 'Nerite Snail',
     scientificName: 'Neritina natalensis',
     category: 'snail',
@@ -443,6 +462,7 @@ export const species = [
   },
   {
     id: 'mystery-snail',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Pomacea.jpg/330px-Pomacea.jpg',
     name: 'Mystery Snail',
     scientificName: 'Pomacea bridgesii',
     category: 'snail',
@@ -467,6 +487,7 @@ export const species = [
   // --------------------------------------------------------------- PLANTS --------------------------------------------------------------
   {
     id: 'java-fern',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Microsorum_pteropus.jpg/330px-Microsorum_pteropus.jpg',
     name: 'Java Fern',
     scientificName: 'Microsorum pteropus',
     category: 'plant',
@@ -482,6 +503,7 @@ export const species = [
   },
   {
     id: 'anubias',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Anubias_barteri_var_glabra.jpg/330px-Anubias_barteri_var_glabra.jpg',
     name: 'Anubias',
     scientificName: 'Anubias barteri',
     category: 'plant',
@@ -497,6 +519,7 @@ export const species = [
   },
   {
     id: 'amazon-sword',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/Echinodorus_bleheri.jpg',
     name: 'Amazon Sword',
     scientificName: 'Echinodorus amazonicus',
     category: 'plant',
@@ -512,6 +535,7 @@ export const species = [
   },
   {
     id: 'java-moss',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Javamoos.jpg/330px-Javamoos.jpg',
     name: 'Java Moss',
     scientificName: 'Taxiphyllum barbieri',
     category: 'plant',
@@ -527,6 +551,7 @@ export const species = [
   },
   {
     id: 'vallisneria',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Vallisneria_spiralis.jpg/330px-Vallisneria_spiralis.jpg',
     name: 'Vallisneria',
     scientificName: 'Vallisneria spiralis',
     category: 'plant',
@@ -542,6 +567,7 @@ export const species = [
   },
   {
     id: 'dwarf-hairgrass',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Eleocharis_parvula_NRCS-1.jpg/330px-Eleocharis_parvula_NRCS-1.jpg',
     name: 'Dwarf Hairgrass',
     scientificName: 'Eleocharis parvula',
     category: 'plant',
@@ -557,6 +583,7 @@ export const species = [
   },
   {
     id: 'water-wisteria',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Hygrophila_difformis.jpg/330px-Hygrophila_difformis.jpg',
     name: 'Water Wisteria',
     scientificName: 'Hygrophila difformis',
     category: 'plant',

@@ -48,9 +48,15 @@ export function getTargetParams(tank) {
     }
   }
 
-  // Water type: must be consistent among stocked species; custom doesn't currently override this.
-  const waterTypes = new Set(stocked.map((s) => s.waterType));
-  result.waterType = waterTypes.size === 1 ? [...waterTypes][0] : waterTypes.size > 1 ? 'conflict' : null;
+  // Water type: explicit setting wins; otherwise inferred from stocked species (must be consistent).
+  if (custom.waterType) {
+    result.waterType = custom.waterType;
+    fieldSource.waterType = 'custom';
+  } else {
+    const waterTypes = new Set(stocked.map((s) => s.waterType));
+    result.waterType = waterTypes.size === 1 ? [...waterTypes][0] : waterTypes.size > 1 ? 'conflict' : null;
+    fieldSource.waterType = stocked.length > 0 ? 'inferred' : 'none';
+  }
 
   result.sizeGallons = custom.sizeGallons != null ? custom.sizeGallons : null;
   result.lighting = custom.lighting != null ? custom.lighting : null;

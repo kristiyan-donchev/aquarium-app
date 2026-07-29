@@ -13,6 +13,7 @@ import {
 import { db } from './firebase.js';
 
 export const defaultCustomParams = {
+  waterType: null,
   tempMin: null,
   tempMax: null,
   phMin: null,

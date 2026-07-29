@@ -63,6 +63,17 @@ export default function MyTank({ tank, setTank, onRemove }) {
         {tank.useCustomParams && (
           <div className="tank-params-form">
             <label>
+              <span>Water type</span>
+              <select
+                value={tank.customParams.waterType ?? ''}
+                onChange={(e) => updateCustom('waterType', e.target.value || null)}
+              >
+                <option value="">Not set</option>
+                <option value="freshwater">Freshwater</option>
+                <option value="saltwater">Saltwater</option>
+              </select>
+            </label>
+            <label>
               <span>Temp min (°F)</span>
               <input
                 type="number"

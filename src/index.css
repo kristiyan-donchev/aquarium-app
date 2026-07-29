@@ -39,6 +39,60 @@ body {
   color: var(--muted);
 }
 
+.tank-switcher {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 10px 14px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.tank-switcher-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.tank-select {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--panel-bg);
+  max-width: 220px;
+}
+
+.tank-switcher-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tank-switcher-form input {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--panel-bg);
+}
+
+.tank-switcher-new {
+  margin-left: auto;
+}
+
+.tank-switcher .link-button:disabled {
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
 .tab-bar {
   display: flex;
   gap: 8px;

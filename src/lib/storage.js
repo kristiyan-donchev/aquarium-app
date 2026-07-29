@@ -1,45 +1,79 @@
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+} from 'firebase/firestore';
 import { db } from './firebase.js';
 
-export const defaultTank = {
-  stockedIds: [],
-  useCustomParams: false,
-  customParams: {
-    tempMin: null,
-    tempMax: null,
-    phMin: null,
-    phMax: null,
-    ghMin: null,
-    ghMax: null,
-    khMin: null,
-    khMax: null,
-    sizeGallons: null,
-    lighting: null,
-  },
+export const defaultCustomParams = {
+  tempMin: null,
+  tempMax: null,
+  phMin: null,
+  phMax: null,
+  ghMin: null,
+  ghMax: null,
+  khMin: null,
+  khMax: null,
+  sizeGallons: null,
+  lighting: null,
 };
 
-function tankDocRef(uid) {
-  return doc(db, 'tanks', uid);
+function tanksCollection(uid) {
+  return collection(db, 'tanks', uid, 'userTanks');
 }
 
-function normalizeTank(parsed) {
+function tankDocRef(uid, tankId) {
+  return doc(db, 'tanks', uid, 'userTanks', tankId);
+}
+
+function normalizeTank(id, data) {
   return {
-    ...structuredClone(defaultTank),
-    ...parsed,
-    customParams: { ...structuredClone(defaultTank.customParams), ...(parsed?.customParams || {}) },
+    id,
+    name: data?.name || 'My Tank',
+    stockedIds: Array.isArray(data?.stockedIds) ? data.stockedIds : [],
+    useCustomParams: Boolean(data?.useCustomParams),
+    customParams: { ...structuredClone(defaultCustomParams), ...(data?.customParams || {}) },
   };
 }
 
-export async function loadTank(uid) {
+export async function listTanks(uid) {
   try {
-    const snap = await getDoc(tankDocRef(uid));
-    if (!snap.exists()) return structuredClone(defaultTank);
-    return normalizeTank(snap.data());
+    const q = query(tanksCollection(uid), orderBy('createdAt', 'asc'));
+    const snap = await getDocs(q);
+    return snap.docs.map((d) => normalizeTank(d.id, d.data()));
   } catch {
-    return structuredClone(defaultTank);
+    return [];
   }
 }
 
-export async function saveTank(uid, tank) {
-  await setDoc(tankDocRef(uid), tank);
+export async function createTank(uid, name) {
+  const data = {
+    name,
+    stockedIds: [],
+    useCustomParams: false,
+    customParams: structuredClone(defaultCustomParams),
+    createdAt: serverTimestamp(),
+  };
+  const ref = await addDoc(tanksCollection(uid), data);
+  return normalizeTank(ref.id, data);
+}
+
+export async function saveTank(uid, tankId, tank) {
+  const { id, ...data } = tank;
+  await setDoc(tankDocRef(uid, tankId), data, { merge: true });
+}
+
+export async function renameTank(uid, tankId, name) {
+  await updateDoc(tankDocRef(uid, tankId), { name });
+}
+
+export async function deleteTank(uid, tankId) {
+  await deleteDoc(tankDocRef(uid, tankId));
 }

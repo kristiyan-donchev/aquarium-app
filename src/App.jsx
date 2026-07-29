@@ -4,8 +4,9 @@ import CatalogBrowser from './components/CatalogBrowser.jsx';
 import MyTank from './components/MyTank.jsx';
 import Recommendations from './components/Recommendations.jsx';
 import AuthScreen from './components/AuthScreen.jsx';
+import TankSwitcher from './components/TankSwitcher.jsx';
 import { useAuth } from './context/AuthContext.jsx';
-import { loadTank, saveTank, defaultTank } from './lib/storage.js';
+import { listTanks, createTank, renameTank, deleteTank, saveTank } from './lib/storage.js';
 
 const TABS = [
   { id: 'catalog', label: 'Catalog' },
@@ -16,41 +17,51 @@ const TABS = [
 export default function App() {
   const { user, authLoading } = useAuth();
   const [tab, setTab] = useState('catalog');
-  const [tank, setTank] = useState(defaultTank);
-  const [tankLoading, setTankLoading] = useState(true);
-  const skipNextSave = useRef(false);
-  const saveTimeout = useRef(null);
+  const [tanks, setTanks] = useState([]);
+  const [activeTankId, setActiveTankId] = useState(null);
+  const [tanksLoading, setTanksLoading] = useState(true);
+  const saveTimers = useRef({});
 
   useEffect(() => {
     if (!user) return;
     let cancelled = false;
-    setTankLoading(true);
-    loadTank(user.uid).then((loaded) => {
+    setTanksLoading(true);
+    (async () => {
+      let list = await listTanks(user.uid);
+      if (list.length === 0) {
+        const created = await createTank(user.uid, 'My Tank');
+        list = [created];
+      }
       if (cancelled) return;
-      skipNextSave.current = true;
-      setTank(loaded);
-      setTankLoading(false);
-    });
+      setTanks(list);
+      setActiveTankId(list[0].id);
+      setTanksLoading(false);
+    })();
     return () => {
       cancelled = true;
     };
   }, [user]);
 
-  useEffect(() => {
-    if (!user || tankLoading) return;
-    if (skipNextSave.current) {
-      skipNextSave.current = false;
-      return;
-    }
-    clearTimeout(saveTimeout.current);
-    saveTimeout.current = setTimeout(() => {
-      saveTank(user.uid, tank);
+  function scheduleSave(tankId, tankData) {
+    clearTimeout(saveTimers.current[tankId]);
+    saveTimers.current[tankId] = setTimeout(() => {
+      saveTank(user.uid, tankId, tankData);
     }, 500);
-    return () => clearTimeout(saveTimeout.current);
-  }, [tank, user, tankLoading]);
+  }
+
+  function updateActiveTank(updater) {
+    setTanks((prev) =>
+      prev.map((t) => {
+        if (t.id !== activeTankId) return t;
+        const updated = updater(t);
+        if (updated !== t) scheduleSave(t.id, updated);
+        return updated;
+      })
+    );
+  }
 
   function addToTank(speciesId) {
-    setTank((prev) =>
+    updateActiveTank((prev) =>
       prev.stockedIds.includes(speciesId)
         ? prev
         : { ...prev, stockedIds: [...prev.stockedIds, speciesId] }
@@ -58,7 +69,26 @@ export default function App() {
   }
 
   function removeFromTank(speciesId) {
-    setTank((prev) => ({ ...prev, stockedIds: prev.stockedIds.filter((id) => id !== speciesId) }));
+    updateActiveTank((prev) => ({ ...prev, stockedIds: prev.stockedIds.filter((id) => id !== speciesId) }));
+  }
+
+  async function handleCreateTank(name) {
+    const created = await createTank(user.uid, name);
+    setTanks((prev) => [...prev, created]);
+    setActiveTankId(created.id);
+  }
+
+  async function handleRenameTank(tankId, name) {
+    await renameTank(user.uid, tankId, name);
+    setTanks((prev) => prev.map((t) => (t.id === tankId ? { ...t, name } : t)));
+  }
+
+  async function handleDeleteTank(tankId) {
+    if (tanks.length <= 1) return;
+    await deleteTank(user.uid, tankId);
+    const next = tanks.filter((t) => t.id !== tankId);
+    setTanks(next);
+    if (activeTankId === tankId) setActiveTankId(next[0]?.id ?? null);
   }
 
   if (authLoading) {
@@ -73,18 +103,28 @@ export default function App() {
     return <AuthScreen />;
   }
 
-  if (tankLoading) {
+  if (tanksLoading) {
     return (
       <div className="app">
         <Header />
-        <p className="empty-state">Loading your tank…</p>
+        <p className="empty-state">Loading your tanks…</p>
       </div>
     );
   }
 
+  const activeTank = tanks.find((t) => t.id === activeTankId);
+
   return (
     <div className="app">
       <Header />
+      <TankSwitcher
+        tanks={tanks}
+        activeTankId={activeTankId}
+        onSwitch={setActiveTankId}
+        onCreate={handleCreateTank}
+        onRename={handleRenameTank}
+        onDelete={handleDeleteTank}
+      />
       <nav className="tab-bar">
         {TABS.map((t) => (
           <button
@@ -93,14 +133,14 @@ export default function App() {
             onClick={() => setTab(t.id)}
           >
             {t.label}
-            {t.id === 'tank' && tank.stockedIds.length > 0 ? ` (${tank.stockedIds.length})` : ''}
+            {t.id === 'tank' && activeTank.stockedIds.length > 0 ? ` (${activeTank.stockedIds.length})` : ''}
           </button>
         ))}
       </nav>
 
-      {tab === 'catalog' && <CatalogBrowser tank={tank} onAdd={addToTank} onRemove={removeFromTank} />}
-      {tab === 'tank' && <MyTank tank={tank} setTank={setTank} onRemove={removeFromTank} />}
-      {tab === 'recommendations' && <Recommendations tank={tank} onAdd={addToTank} />}
+      {tab === 'catalog' && <CatalogBrowser tank={activeTank} onAdd={addToTank} onRemove={removeFromTank} />}
+      {tab === 'tank' && <MyTank tank={activeTank} setTank={updateActiveTank} onRemove={removeFromTank} />}
+      {tab === 'recommendations' && <Recommendations tank={activeTank} onAdd={addToTank} />}
 
       <footer className="app-footer">
         <p>

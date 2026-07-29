@@ -25,11 +25,14 @@ parameter conflicts spelled out, not just a yes/no.
 - **"My Tank"** — add/remove species you keep, and optionally set your tank's own parameters
   explicitly (temp, pH, GH, KH, size, lighting). Anything you don't set explicitly is *inferred* as
   the overlap of ranges across everything currently stocked, shown live on the My Tank tab.
+- **Multiple named tanks** — create, rename, and delete as many tanks as you want (e.g. "Community
+  55g", "Shrimp tank") from the tank switcher above the tabs. Catalog additions, parameters, and
+  recommendations all apply to whichever tank is currently selected.
 - **Recommendations** — every other catalog species, evaluated against your tank and sorted into
   **Compatible**, **Compatible with caution**, and **Not compatible**, each with the specific
   reasons (which parameter conflicted, which existing tankmate is a problem and why).
-- **Accounts required** — sign up or log in (email/password or Google) to use the app. Your tank is
-  saved to your account in Firestore, so it follows you across browsers/devices instead of living in
+- **Accounts required** — sign up or log in (email/password or Google) to use the app. Your tanks are
+  saved to your account in Firestore, so they follow you across browsers/devices instead of living in
   one browser's `localStorage`.
 
 ## How the compatibility algorithm works
@@ -88,12 +91,13 @@ aquarium-catalog/
 │   ├── data/species.js          # the species catalog (dataset)
 │   ├── lib/compatibility.js     # target-parameter inference + compatibility algorithm
 │   ├── lib/firebase.js          # Firebase app/auth/Firestore initialization
-│   ├── lib/storage.js           # Firestore load/save for "My Tank", keyed by user uid
+│   ├── lib/storage.js           # Firestore CRUD for tanks (list/create/rename/delete/save),
+│   │                            # one doc per tank under tanks/{uid}/userTanks/{tankId}
 │   ├── context/AuthContext.jsx  # auth state + signUp/logIn/logInWithGoogle/logOut
 │   ├── components/              # CatalogBrowser, MyTank, Recommendations, SpeciesCard,
-│   │                            # Header, AuthScreen (login/signup gate)
-│   └── App.jsx                  # auth gate + tab navigation + top-level state
-├── firestore.rules              # security rules: a user may only read/write their own tank doc
+│   │                            # Header, AuthScreen (login/signup gate), TankSwitcher
+│   └── App.jsx                  # auth gate + tank list/active-tank state + tab navigation
+├── firestore.rules              # security rules: a user may only read/write their own tanks
 └── index.html
 ```
 

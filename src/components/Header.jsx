@@ -1,8 +1,9 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext.jsx';
+import AccountMenu from './AccountMenu.jsx';
 
-export default function Header({ onViewProfile }) {
-  const { user, logOut } = useAuth();
+export default function Header({ onViewProfile, onViewSettings }) {
+  const { user } = useAuth();
 
   return (
     <header className="app-header">
@@ -14,16 +15,7 @@ export default function Header({ onViewProfile }) {
       </div>
       {user && (
         <div className="account-bar">
-          {onViewProfile ? (
-            <button type="button" className="link-button" onClick={onViewProfile}>
-              {user.displayName || user.email}
-            </button>
-          ) : (
-            <span className="account-email">{user.displayName || user.email}</span>
-          )}
-          <button type="button" className="secondary-button" onClick={logOut}>
-            Log out
-          </button>
+          <AccountMenu onViewProfile={onViewProfile} onViewSettings={onViewSettings} />
         </div>
       )}
     </header>

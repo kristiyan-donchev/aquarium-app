@@ -8,6 +8,7 @@ import TankSwitcher from './components/TankSwitcher.jsx';
 import Credits from './components/Credits.jsx';
 import Forum from './components/Forum.jsx';
 import Profile from './components/Profile.jsx';
+import Settings from './components/Settings.jsx';
 import { useAuth } from './context/AuthContext.jsx';
 import { listTanks, createTank, renameTank, deleteTank, saveTank } from './lib/storage.js';
 import { syncUserProfile } from './lib/users.js';
@@ -27,6 +28,7 @@ export default function App() {
   const [activeTankId, setActiveTankId] = useState(null);
   const [tanksLoading, setTanksLoading] = useState(true);
   const [viewingProfileUid, setViewingProfileUid] = useState(null);
+  const [viewingSettings, setViewingSettings] = useState(false);
   const saveTimers = useRef({});
 
   useEffect(() => {
@@ -126,11 +128,32 @@ export default function App() {
     );
   }
 
+  if (viewingSettings) {
+    return (
+      <div className="app">
+        <Header
+          onViewProfile={() => {
+            setViewingSettings(false);
+            setViewingProfileUid(user.uid);
+          }}
+          onViewSettings={() => setViewingSettings(true)}
+        />
+        <Settings user={user} onBack={() => setViewingSettings(false)} />
+      </div>
+    );
+  }
+
   if (viewingProfileUid) {
     return (
       <div className="app">
-        <Header onViewProfile={() => setViewingProfileUid(user.uid)} />
-        <Profile uid={viewingProfileUid} currentUser={user} onBack={() => setViewingProfileUid(null)} />
+        <Header
+          onViewProfile={() => setViewingProfileUid(user.uid)}
+          onViewSettings={() => {
+            setViewingProfileUid(null);
+            setViewingSettings(true);
+          }}
+        />
+        <Profile uid={viewingProfileUid} onBack={() => setViewingProfileUid(null)} />
       </div>
     );
   }
@@ -139,7 +162,10 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header onViewProfile={() => setViewingProfileUid(user.uid)} />
+      <Header
+        onViewProfile={() => setViewingProfileUid(user.uid)}
+        onViewSettings={() => setViewingSettings(true)}
+      />
       <TankSwitcher
         tanks={tanks}
         activeTankId={activeTankId}

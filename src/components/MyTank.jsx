@@ -25,8 +25,7 @@ export default function MyTank({ tank, setTank, onRemove }) {
   }
 
   function fmtRange(r, unit = '') {
-    if (!r) return 'unconstrained (no species stocked yet)';
-    if (r === 'conflict') return 'conflict — stocked species don\'t actually overlap!';
+    if (!r) return 'not set';
     return `${r[0]}–${r[1]}${unit}`;
   }
 
@@ -57,7 +56,7 @@ export default function MyTank({ tank, setTank, onRemove }) {
             checked={tank.useCustomParams}
             onChange={(e) => toggleUseCustom(e.target.checked)}
           />
-          Set my tank's parameters explicitly (otherwise inferred from what's stocked)
+          Set my tank's parameters
         </label>
 
         {tank.useCustomParams && (
@@ -197,9 +196,8 @@ export default function MyTank({ tank, setTank, onRemove }) {
             </div>
           </dl>
           <p className="hint">
-            These are the parameters used on the Recommendations tab: explicit values you set above,
-            or — for any field you leave blank — the overlap of ranges across everything currently
-            stocked.
+            These are the parameters used on the Recommendations tab. A field left blank is treated as
+            unconstrained — set it above if you want compatibility checks to enforce it.
           </p>
         </div>
       </section>

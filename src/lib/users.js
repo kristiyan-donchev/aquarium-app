@@ -1,4 +1,4 @@
-import { doc, getDoc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
+import { deleteDoc, doc, getDoc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import { db, auth } from './firebase.js';
 
 function userDocRef(uid) {
@@ -38,4 +38,8 @@ export async function getUserProfile(uid) {
 
 export async function updateDisplayName(uid, displayName) {
   await updateDoc(userDocRef(uid), { displayName });
+}
+
+export async function deleteUserProfile(uid) {
+  await deleteDoc(userDocRef(uid));
 }

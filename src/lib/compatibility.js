@@ -1,24 +1,14 @@
 import { species, getSpeciesById } from '../data/species.js';
 
-// Intersect a list of [min, max] ranges. Returns null if any pair fails to overlap.
-function intersectRanges(ranges) {
-  const valid = ranges.filter((r) => r && r[0] != null && r[1] != null);
-  if (valid.length === 0) return null;
-  const lo = Math.max(...valid.map((r) => r[0]));
-  const hi = Math.min(...valid.map((r) => r[1]));
-  if (lo > hi) return 'conflict'; // stocked species themselves don't overlap
-  return [lo, hi];
-}
-
 function rangesOverlap(a, b) {
   if (!a || !b) return true; // unconstrained
   return a[0] <= b[1] && b[0] <= a[1];
 }
 
 /**
- * Determine the tank's target water parameters, either from explicit user-set values
- * or inferred as the overlap of everything currently stocked. Per-field: custom wins,
- * otherwise infer, otherwise unconstrained (null).
+ * Determine the tank's target water parameters from explicit user-set values only.
+ * A field stays unconstrained (null) unless you set it yourself on the My Tank tab —
+ * it is never inferred from whatever happens to be stocked.
  */
 export function getTargetParams(tank) {
   const stocked = tank.stockedIds.map(getSpeciesById).filter(Boolean);
@@ -38,25 +28,14 @@ export function getTargetParams(tank) {
     if (custom[minKey] != null && custom[maxKey] != null) {
       result[key] = [custom[minKey], custom[maxKey]];
       fieldSource[key] = 'custom';
-    } else if (stocked.length > 0) {
-      const inferred = intersectRanges(stocked.map((s) => [s[minKey], s[maxKey]]));
-      result[key] = inferred === 'conflict' ? 'conflict' : inferred;
-      fieldSource[key] = 'inferred';
     } else {
       result[key] = null;
       fieldSource[key] = 'none';
     }
   }
 
-  // Water type: explicit setting wins; otherwise inferred from stocked species (must be consistent).
-  if (custom.waterType) {
-    result.waterType = custom.waterType;
-    fieldSource.waterType = 'custom';
-  } else {
-    const waterTypes = new Set(stocked.map((s) => s.waterType));
-    result.waterType = waterTypes.size === 1 ? [...waterTypes][0] : waterTypes.size > 1 ? 'conflict' : null;
-    fieldSource.waterType = stocked.length > 0 ? 'inferred' : 'none';
-  }
+  result.waterType = custom.waterType || null;
+  fieldSource.waterType = custom.waterType ? 'custom' : 'none';
 
   result.sizeGallons = custom.sizeGallons != null ? custom.sizeGallons : null;
   result.lighting = custom.lighting != null ? custom.lighting : null;
@@ -78,7 +57,7 @@ export function evaluateCandidate(candidate, tank, target) {
   const stocked = tank.stockedIds.map(getSpeciesById).filter(Boolean);
 
   // Water type
-  if (target.waterType && target.waterType !== 'conflict' && candidate.waterType !== target.waterType) {
+  if (target.waterType && candidate.waterType !== target.waterType) {
     reasons.push({
       severity: 'block',
       message: `Water type mismatch: tank is ${target.waterType}, ${candidate.name} needs ${candidate.waterType}.`,
@@ -94,7 +73,7 @@ export function evaluateCandidate(candidate, tank, target) {
   ];
   for (const check of paramChecks) {
     const tRange = target[check.key];
-    if (!tRange || tRange === 'conflict') continue;
+    if (!tRange) continue;
     const overlap = rangesOverlap(tRange, [check.min, check.max]);
     if (!overlap) {
       reasons.push({

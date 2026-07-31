@@ -504,13 +504,66 @@ body {
   gap: 10px;
 }
 
-.account-email {
-  color: var(--muted);
-  font-size: 13px;
+.account-menu {
+  position: relative;
 }
 
-.account-bar .secondary-button {
-  width: auto;
+.account-menu-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 13px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.account-menu-trigger:hover {
+  background: #f1f5f9;
+}
+
+.account-menu-caret {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.account-menu-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 160px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.account-menu-dropdown button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.account-menu-dropdown button:hover {
+  background: #f1f5f9;
+}
+
+.account-menu-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
 }
 
 /* Auth screen */
@@ -742,6 +795,88 @@ body {
   font-size: 13px;
 }
 
+/* Settings */
+.settings-section {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  margin-top: 20px;
+}
+
+.settings-section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.settings-form {
+  display: flex;
+  gap: 8px;
+}
+
+.settings-form input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--panel-bg);
+}
+
+.settings-form .secondary-button,
+.settings-form-stack .secondary-button,
+.settings-danger .danger-button {
+  width: auto;
+}
+
+.settings-form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 360px;
+}
+
+.settings-form-stack label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.settings-form-stack input {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--panel-bg);
+}
+
+.settings-danger {
+  border-color: var(--red);
+}
+
+.settings-danger h3 {
+  color: var(--red);
+}
+
+.danger-button {
+  background: none;
+  border: 1px solid var(--red);
+  color: var(--red);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.danger-button:hover {
+  background: var(--red);
+  color: white;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
@@ -807,6 +942,18 @@ body {
 
   .secondary-button:hover {
     background: #1c2e31;
+  }
+
+  .account-menu-trigger:hover {
+    background: #1c2e31;
+  }
+
+  .account-menu-dropdown button:hover {
+    background: #1c2e31;
+  }
+
+  .danger-button:hover {
+    color: #16262b;
   }
 
   .error-banner {

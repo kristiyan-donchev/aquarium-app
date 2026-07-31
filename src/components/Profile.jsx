@@ -1,27 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { getUserProfile, updateDisplayName } from '../lib/users.js';
+import { getUserProfile } from '../lib/users.js';
 import { listPostsByAuthor } from '../lib/forum.js';
 import { listTanks } from '../lib/storage.js';
 import { getSpeciesById } from '../data/species.js';
-import { updateProfile } from 'firebase/auth';
-import { auth } from '../lib/firebase.js';
-import { useAuth } from '../context/AuthContext.jsx';
 
 function fmtDate(d) {
   if (!d) return '';
   return d.toLocaleDateString(undefined, { dateStyle: 'medium' });
 }
 
-export default function Profile({ uid, currentUser, onBack }) {
-  const { refreshUser } = useAuth();
+export default function Profile({ uid, onBack }) {
   const [profile, setProfile] = useState(null);
   const [posts, setPosts] = useState([]);
   const [tanks, setTanks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [editing, setEditing] = useState(false);
-  const [nameInput, setNameInput] = useState('');
-
-  const isOwnProfile = currentUser.uid === uid;
 
   useEffect(() => {
     let cancelled = false;
@@ -39,24 +31,6 @@ export default function Profile({ uid, currentUser, onBack }) {
       cancelled = true;
     };
   }, [uid]);
-
-  function startEditing() {
-    setNameInput(profile?.displayName || '');
-    setEditing(true);
-  }
-
-  async function saveName(e) {
-    e.preventDefault();
-    const trimmed = nameInput.trim();
-    if (!trimmed) return;
-    await updateDisplayName(uid, trimmed);
-    if (auth.currentUser?.uid === uid) {
-      await updateProfile(auth.currentUser, { displayName: trimmed });
-      refreshUser();
-    }
-    setProfile((prev) => ({ ...prev, displayName: trimmed }));
-    setEditing(false);
-  }
 
   if (loading) {
     return (
@@ -86,31 +60,7 @@ export default function Profile({ uid, currentUser, onBack }) {
         &larr; Back
       </button>
 
-      {editing ? (
-        <form onSubmit={saveName} className="tank-switcher-form">
-          <input
-            autoFocus
-            value={nameInput}
-            onChange={(e) => setNameInput(e.target.value)}
-            maxLength={40}
-          />
-          <button type="submit" className="link-button">
-            Save
-          </button>
-          <button type="button" className="link-button" onClick={() => setEditing(false)}>
-            Cancel
-          </button>
-        </form>
-      ) : (
-        <h2>
-          {profile.displayName}
-          {isOwnProfile && (
-            <button className="link-button profile-edit-name" onClick={startEditing}>
-              Edit
-            </button>
-          )}
-        </h2>
-      )}
+      <h2>{profile.displayName}</h2>
 
       <section>
         <h3>Posts ({posts.length})</h3>

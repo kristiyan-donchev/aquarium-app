@@ -15,7 +15,7 @@ parameter conflicts spelled out, not just a yes/no.
 
 ## What it does
 
-- **Species catalog** — 27 real, commonly-kept freshwater species (17 fish, 2 shrimp, 2 snails, 6
+- **Species catalog** — 42 real, commonly-kept freshwater species (24 fish, 3 shrimp, 3 snails, 12
   plants) with: temperature range (°F), pH range, GH/KH hardness range (dGH/dKH), minimum tank size
   (gallons), lighting need (plants), diet, temperament, schooling minimums, water type, and flags for
   fin-nipping, long fins, and shrimp/small-fish predation — plus a free-text notes field with the
@@ -191,7 +191,7 @@ themselves.
   Molly, Guppy, Nerite Snail — tolerate brackish conditions, noted in their entries). No saltwater
   reef species are included; that's a meaningfully different dataset this starter set doesn't
   attempt.
-- **27 species, not exhaustive.** This covers commonly-kept community freshwater species, not every
+- **42 species, not exhaustive.** This covers commonly-kept community freshwater species, not every
   fish/plant/invert in the hobby.
 - **Requires a Firebase project.** There's no shared/hosted backend — each deployment needs its own
   Firebase project (free tier is enough) configured as described above.

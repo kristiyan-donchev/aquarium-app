@@ -6,13 +6,17 @@ import Recommendations from './components/Recommendations.jsx';
 import AuthScreen from './components/AuthScreen.jsx';
 import TankSwitcher from './components/TankSwitcher.jsx';
 import Credits from './components/Credits.jsx';
+import Forum from './components/Forum.jsx';
+import Profile from './components/Profile.jsx';
 import { useAuth } from './context/AuthContext.jsx';
 import { listTanks, createTank, renameTank, deleteTank, saveTank } from './lib/storage.js';
+import { syncUserProfile } from './lib/users.js';
 
 const TABS = [
   { id: 'catalog', label: 'Catalog' },
   { id: 'tank', label: 'My Tank' },
   { id: 'recommendations', label: 'Recommendations' },
+  { id: 'forum', label: 'Forum' },
   { id: 'credits', label: 'Credits' },
 ];
 
@@ -22,7 +26,14 @@ export default function App() {
   const [tanks, setTanks] = useState([]);
   const [activeTankId, setActiveTankId] = useState(null);
   const [tanksLoading, setTanksLoading] = useState(true);
+  const [viewingProfileUid, setViewingProfileUid] = useState(null);
   const saveTimers = useRef({});
+
+  useEffect(() => {
+    if (!user) return;
+    syncUserProfile(user);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.uid]);
 
   useEffect(() => {
     if (!user) return;
@@ -42,7 +53,8 @@ export default function App() {
     return () => {
       cancelled = true;
     };
-  }, [user]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.uid]);
 
   function scheduleSave(tankId, tankData) {
     clearTimeout(saveTimers.current[tankId]);
@@ -114,11 +126,20 @@ export default function App() {
     );
   }
 
+  if (viewingProfileUid) {
+    return (
+      <div className="app">
+        <Header onViewProfile={() => setViewingProfileUid(user.uid)} />
+        <Profile uid={viewingProfileUid} currentUser={user} onBack={() => setViewingProfileUid(null)} />
+      </div>
+    );
+  }
+
   const activeTank = tanks.find((t) => t.id === activeTankId);
 
   return (
     <div className="app">
-      <Header />
+      <Header onViewProfile={() => setViewingProfileUid(user.uid)} />
       <TankSwitcher
         tanks={tanks}
         activeTankId={activeTankId}
@@ -143,6 +164,7 @@ export default function App() {
       {tab === 'catalog' && <CatalogBrowser tank={activeTank} onAdd={addToTank} onRemove={removeFromTank} />}
       {tab === 'tank' && <MyTank tank={activeTank} setTank={updateActiveTank} onRemove={removeFromTank} />}
       {tab === 'recommendations' && <Recommendations tank={activeTank} onAdd={addToTank} />}
+      {tab === 'forum' && <Forum user={user} onViewProfile={setViewingProfileUid} />}
       {tab === 'credits' && <Credits />}
 
       <footer className="app-footer">

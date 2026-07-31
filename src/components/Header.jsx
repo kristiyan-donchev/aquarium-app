@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext.jsx';
 
-export default function Header() {
+export default function Header({ onViewProfile }) {
   const { user, logOut } = useAuth();
 
   return (
@@ -14,7 +14,13 @@ export default function Header() {
       </div>
       {user && (
         <div className="account-bar">
-          <span className="account-email">{user.email}</span>
+          {onViewProfile ? (
+            <button type="button" className="link-button" onClick={onViewProfile}>
+              {user.displayName || user.email}
+            </button>
+          ) : (
+            <span className="account-email">{user.displayName || user.email}</span>
+          )}
           <button type="button" className="secondary-button" onClick={logOut}>
             Log out
           </button>

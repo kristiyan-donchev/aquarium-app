@@ -596,6 +596,152 @@ body {
   margin: 0;
 }
 
+/* Forum */
+.post-new-button {
+  width: auto;
+  margin-bottom: 16px;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.post-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.post-form input,
+.post-form textarea,
+.reply-form textarea {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--panel-bg);
+  resize: vertical;
+}
+
+.post-form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.post-form-actions .primary-button,
+.post-form-actions .secondary-button {
+  width: auto;
+}
+
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.post-list-item {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+}
+
+.post-title-link {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: left;
+}
+
+.post-meta {
+  margin: 4px 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.post-meta .link-button {
+  font-size: 12px;
+  display: inline;
+}
+
+.post-body {
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.post-snippet {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.reply-list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reply-item {
+  padding: 10px 12px;
+  background: var(--bg);
+  border-radius: 8px;
+}
+
+.reply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reply-form .primary-button {
+  width: auto;
+  align-self: flex-start;
+}
+
+/* Profile */
+.profile-edit-name {
+  margin-left: 10px;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.profile-tanks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.profile-tank-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.profile-tank-card h4 {
+  margin: 0 0 8px;
+}
+
+.profile-tank-species {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;

@@ -5,8 +5,10 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
 import { auth, googleProvider, firebaseConfigured } from '../lib/firebase.js';
+import { createUserProfile } from '../lib/users.js';
 
 const AuthContext = createContext(null);
 
@@ -30,7 +32,15 @@ export function AuthProvider({ children }) {
     user,
     authLoading,
     signUp: firebaseConfigured
-      ? (email, password) => createUserWithEmailAndPassword(auth, email, password)
+      ? async (email, password, displayName) => {
+          const cred = await createUserWithEmailAndPassword(auth, email, password);
+          if (displayName) {
+            await updateProfile(cred.user, { displayName });
+            await createUserProfile(cred.user.uid, displayName);
+            setUser({ ...cred.user });
+          }
+          return cred;
+        }
       : notConfiguredError,
     logIn: firebaseConfigured
       ? (email, password) => signInWithEmailAndPassword(auth, email, password)
@@ -39,6 +49,9 @@ export function AuthProvider({ children }) {
       ? () => signInWithPopup(auth, googleProvider)
       : notConfiguredError,
     logOut: firebaseConfigured ? () => signOut(auth) : notConfiguredError,
+    refreshUser: () => {
+      if (auth.currentUser) setUser({ ...auth.currentUser });
+    },
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

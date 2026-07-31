@@ -19,6 +19,7 @@ export default function AuthScreen() {
   const [mode, setMode] = useState('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [displayName, setDisplayName] = useState('');
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
@@ -28,7 +29,7 @@ export default function AuthScreen() {
     setBusy(true);
     try {
       if (mode === 'signup') {
-        await signUp(email, password);
+        await signUp(email, password, displayName.trim());
       } else {
         await logIn(email, password);
       }
@@ -84,6 +85,19 @@ export default function AuthScreen() {
         </div>
 
         <form onSubmit={handleSubmit} className="auth-form">
+          {mode === 'signup' && (
+            <label>
+              <span>Display name</span>
+              <input
+                type="text"
+                autoComplete="nickname"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+                maxLength={40}
+                required
+              />
+            </label>
+          )}
           <label>
             <span>Email</span>
             <input

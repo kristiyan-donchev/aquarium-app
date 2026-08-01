@@ -6,6 +6,17 @@ const CATEGORIES = ['fish', 'shrimp', 'snail', 'plant'];
 const WATER_TYPES = ['freshwater', 'brackish', 'saltwater'];
 const TEMPERAMENTS = ['peaceful', 'semi-aggressive', 'aggressive'];
 const DIFFICULTIES = ['beginner', 'intermediate', 'advanced'];
+const CATEGORY_ORDER = { fish: 0, shrimp: 1, snail: 2, plant: 3 };
+
+const SORT_OPTIONS = {
+  category: { label: 'Category', compare: (a, b) => CATEGORY_ORDER[a.category] - CATEGORY_ORDER[b.category] || a.name.localeCompare(b.name) },
+  name: { label: 'Name (A–Z)', compare: (a, b) => a.name.localeCompare(b.name) },
+  difficulty: {
+    label: 'Difficulty',
+    compare: (a, b) =>
+      DIFFICULTIES.indexOf(a.difficulty) - DIFFICULTIES.indexOf(b.difficulty) || a.name.localeCompare(b.name),
+  },
+};
 
 export default function CatalogBrowser({ tank, onAdd, onRemove }) {
   const [query, setQuery] = useState('');
@@ -13,20 +24,23 @@ export default function CatalogBrowser({ tank, onAdd, onRemove }) {
   const [waterType, setWaterType] = useState('all');
   const [temperament, setTemperament] = useState('all');
   const [difficulty, setDifficulty] = useState('all');
+  const [sortBy, setSortBy] = useState('category');
 
   const stockedSet = useMemo(() => new Set(tank.stockedIds), [tank.stockedIds]);
 
-  const filtered = species.filter((s) => {
-    if (category !== 'all' && s.category !== category) return false;
-    if (waterType !== 'all' && s.waterType !== waterType) return false;
-    if (temperament !== 'all' && s.temperament !== temperament) return false;
-    if (difficulty !== 'all' && s.difficulty !== difficulty) return false;
-    if (query.trim()) {
-      const q = query.trim().toLowerCase();
-      if (!s.name.toLowerCase().includes(q) && !s.scientificName.toLowerCase().includes(q)) return false;
-    }
-    return true;
-  });
+  const filtered = species
+    .filter((s) => {
+      if (category !== 'all' && s.category !== category) return false;
+      if (waterType !== 'all' && s.waterType !== waterType) return false;
+      if (temperament !== 'all' && s.temperament !== temperament) return false;
+      if (difficulty !== 'all' && s.difficulty !== difficulty) return false;
+      if (query.trim()) {
+        const q = query.trim().toLowerCase();
+        if (!s.name.toLowerCase().includes(q) && !s.scientificName.toLowerCase().includes(q)) return false;
+      }
+      return true;
+    })
+    .sort(SORT_OPTIONS[sortBy].compare);
 
   return (
     <div className="panel">
@@ -41,6 +55,16 @@ export default function CatalogBrowser({ tank, onAdd, onRemove }) {
       </div>
 
       <div className="filters-bar">
+        <label>
+          <span>Sort by</span>
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+            {Object.entries(SORT_OPTIONS).map(([key, opt]) => (
+              <option key={key} value={key}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+        </label>
         <label>
           <span>Category</span>
           <select value={category} onChange={(e) => setCategory(e.target.value)}>

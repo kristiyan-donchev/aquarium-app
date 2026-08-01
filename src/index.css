@@ -1,15 +1,19 @@
 :root {
   color-scheme: light;
-  --bg: #f4f8f9;
+  --bg: #eaf6fb;
   --panel-bg: #ffffff;
-  --border: #dce6e8;
+  --panel-glass: rgba(255, 255, 255, 0.78);
+  --border: #bfe4f0;
   --text: #16262b;
-  --muted: #5c7278;
+  --muted: #4c6b76;
   --primary: #0e7c8a;
   --primary-dark: #0a5e69;
   --green: #16a34a;
   --amber: #ca8a04;
   --red: #dc2626;
+  --water-top: #dff3fa;
+  --water-mid: #a9dcee;
+  --water-deep: #4fa8cc;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
@@ -19,7 +23,7 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--water-mid);
   color: var(--text);
 }
 
@@ -97,31 +101,45 @@ body {
   display: flex;
   gap: 8px;
   margin: 20px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 6px;
+  background: var(--panel-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(15, 90, 110, 0.1);
 }
 
 .tab-button {
   background: none;
   border: none;
+  border-radius: 8px;
   padding: 10px 16px;
   font-size: 15px;
   cursor: pointer;
   color: var(--muted);
-  border-bottom: 2px solid transparent;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.tab-button:hover {
+  background: rgba(14, 124, 138, 0.08);
 }
 
 .tab-button.active {
-  color: var(--primary);
-  border-bottom-color: var(--primary);
+  color: #ffffff;
+  background: var(--primary);
   font-weight: 600;
 }
 
 .panel {
-  background: var(--panel-bg);
+  background: var(--panel-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
+  box-shadow: 0 4px 18px rgba(15, 90, 110, 0.1);
 }
 
 .panel h2 {
@@ -496,6 +514,13 @@ body {
   align-items: flex-start;
   gap: 16px;
   flex-wrap: wrap;
+  background: var(--panel-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 18px rgba(15, 90, 110, 0.1);
 }
 
 .account-bar {
@@ -877,14 +902,123 @@ body {
   color: white;
 }
 
+/* Aquarium background */
+.aquarium-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aquarium-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--water-top) 0%, var(--water-mid) 45%, var(--water-deep) 100%);
+}
+
+.seaweed {
+  position: absolute;
+  bottom: -6px;
+  transform-origin: bottom center;
+  animation: sway 6s ease-in-out infinite;
+}
+
+.fish-lane {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  animation-name: swim-right;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.fish-lane.reverse {
+  animation-name: swim-left;
+}
+
+.fish {
+  display: block;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
+}
+
+.bubble-field {
+  position: absolute;
+  inset: 0;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.15));
+  animation-name: bubble-rise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes swim-right {
+  from {
+    transform: translateX(-90px);
+  }
+  to {
+    transform: translateX(calc(100vw + 90px));
+  }
+}
+
+@keyframes swim-left {
+  from {
+    transform: translateX(calc(100vw + 90px));
+  }
+  to {
+    transform: translateX(-90px);
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes bubble-rise {
+  from {
+    transform: translateY(0) translateX(0);
+    opacity: 0.85;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(-105vh) translateX(14px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fish-lane,
+  .seaweed,
+  .bubble {
+    animation: none;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
     --bg: #0f1a1c;
     --panel-bg: #16262b;
+    --panel-glass: rgba(18, 32, 36, 0.72);
     --border: #274045;
     --text: #e6f0f1;
     --muted: #93a8ac;
+    --water-top: #0d2431;
+    --water-mid: #071923;
+    --water-deep: #030d14;
   }
 
   .badge {

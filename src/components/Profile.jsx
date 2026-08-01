@@ -3,6 +3,7 @@ import { getUserProfile } from '../lib/users.js';
 import { listPostsByAuthor } from '../lib/forum.js';
 import { listTanks } from '../lib/storage.js';
 import { getSpeciesById } from '../data/species.js';
+import { initials, avatarColorClass } from '../lib/avatar.js';
 
 function fmtDate(d) {
   if (!d) return '';
@@ -69,10 +70,15 @@ export default function Profile({ uid, onBack }) {
         ) : (
           <ul className="post-list">
             {posts.map((p) => (
-              <li key={p.id} className="post-list-item">
-                <div className="post-title-link">{p.title}</div>
-                <p className="post-meta">{fmtDate(p.createdAt)}</p>
-                <p className="post-snippet">{p.body}</p>
+              <li key={p.id} className="post-card">
+                <div className={`avatar ${avatarColorClass(profile.displayName)}`} aria-hidden="true">
+                  {initials(profile.displayName)}
+                </div>
+                <div className="post-card-body">
+                  <h3 className="post-card-title">{p.title}</h3>
+                  <p className="post-meta">{fmtDate(p.createdAt)}</p>
+                  <p className="post-snippet">{p.body}</p>
+                </div>
               </li>
             ))}
           </ul>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getPost, listReplies, createReply, deletePost, deleteReply } from '../lib/forum.js';
+import { initials, avatarColorClass } from '../lib/avatar.js';
 
 function fmtDate(d) {
   if (!d) return '';
@@ -78,40 +79,52 @@ export default function PostThread({ postId, user, onBack, onViewProfile, onPost
         &larr; Back to forum
       </button>
 
-      <h2>{post.title}</h2>
-      <p className="post-meta">
-        by{' '}
-        <button className="link-button" onClick={() => onViewProfile(post.authorId)}>
-          {post.authorName}
-        </button>{' '}
-        &middot; {fmtDate(post.createdAt)}
-      </p>
-      <p className="post-body">{post.body}</p>
-      {user.uid === post.authorId && (
-        <button className="link-button" onClick={handleDeletePost}>
-          Delete post
-        </button>
-      )}
+      <article className="post-thread-header">
+        <div className={`avatar ${avatarColorClass(post.authorName)}`} aria-hidden="true">
+          {initials(post.authorName)}
+        </div>
+        <div className="post-thread-header-body">
+          <h2>{post.title}</h2>
+          <p className="post-meta">
+            by{' '}
+            <button className="link-button" onClick={() => onViewProfile(post.authorId)}>
+              {post.authorName}
+            </button>{' '}
+            &middot; {fmtDate(post.createdAt)}
+          </p>
+          <p className="post-body">{post.body}</p>
+          {user.uid === post.authorId && (
+            <button className="link-button link-button-danger" onClick={handleDeletePost}>
+              Delete post
+            </button>
+          )}
+        </div>
+      </article>
 
-      <h3>Replies ({replies.length})</h3>
+      <h3 className="replies-heading">Replies ({replies.length})</h3>
       {replies.length === 0 ? (
         <p className="empty-state">No replies yet — be the first.</p>
       ) : (
         <ul className="reply-list">
           {replies.map((r) => (
-            <li key={r.id} className="reply-item">
-              <p className="post-meta">
-                <button className="link-button" onClick={() => onViewProfile(r.authorId)}>
-                  {r.authorName}
-                </button>{' '}
-                &middot; {fmtDate(r.createdAt)}
-              </p>
-              <p className="post-body">{r.body}</p>
-              {user.uid === r.authorId && (
-                <button className="link-button" onClick={() => handleDeleteReply(r.id)}>
-                  Delete
-                </button>
-              )}
+            <li key={r.id} className="reply-card">
+              <div className={`avatar avatar-sm ${avatarColorClass(r.authorName)}`} aria-hidden="true">
+                {initials(r.authorName)}
+              </div>
+              <div className="reply-card-body">
+                <p className="post-meta">
+                  <button className="link-button" onClick={() => onViewProfile(r.authorId)}>
+                    {r.authorName}
+                  </button>{' '}
+                  &middot; {fmtDate(r.createdAt)}
+                </p>
+                <p className="post-body">{r.body}</p>
+                {user.uid === r.authorId && (
+                  <button className="link-button link-button-danger" onClick={() => handleDeleteReply(r.id)}>
+                    Delete
+                  </button>
+                )}
+              </div>
             </li>
           ))}
         </ul>

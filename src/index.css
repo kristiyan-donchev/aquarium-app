@@ -746,23 +746,75 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
-.post-list-item {
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 14px;
+.post-card {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
 }
 
-.post-title-link {
+.post-card-clickable {
+  cursor: pointer;
+  transition: box-shadow 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.post-card-clickable:hover,
+.post-card-clickable:focus-visible {
+  border-color: var(--primary);
+  box-shadow: 0 6px 20px rgba(15, 90, 110, 0.15);
+  transform: translateY(-1px);
+}
+
+.post-card-clickable:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.post-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-card-title {
+  margin: 0 0 4px;
   font-size: 16px;
   font-weight: 700;
   color: var(--text);
-  text-align: left;
 }
 
+.avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.avatar-sm {
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
+}
+
+.avatar-c0 { background: #0e7c8a; }
+.avatar-c1 { background: #d97757; }
+.avatar-c2 { background: #7c5cbf; }
+.avatar-c3 { background: #ca8a04; }
+.avatar-c4 { background: #2f8f5b; }
+.avatar-c5 { background: #3b6fd1; }
+
 .post-meta {
-  margin: 4px 0;
+  margin: 0 0 6px;
   font-size: 12px;
   color: var(--muted);
 }
@@ -775,28 +827,59 @@ body {
 .post-body {
   white-space: pre-wrap;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .post-snippet {
-  margin: 4px 0 0;
+  margin: 0;
   font-size: 13px;
   color: var(--muted);
+  line-height: 1.5;
+}
+
+.link-button-danger {
+  color: var(--red);
+}
+
+.post-thread-header {
+  display: flex;
+  gap: 14px;
+  margin: 14px 0 24px;
+}
+
+.post-thread-header-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-thread-header-body h2 {
+  margin: 0 0 6px;
+}
+
+.replies-heading {
+  margin-bottom: 12px;
 }
 
 .reply-list {
   list-style: none;
-  margin: 0 0 16px;
+  margin: 0 0 20px;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
-.reply-item {
-  padding: 10px 12px;
+.reply-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
   background: var(--bg);
-  border-radius: 8px;
+  border-radius: 10px;
+}
+
+.reply-card-body {
+  flex: 1;
+  min-width: 0;
 }
 
 .reply-form {

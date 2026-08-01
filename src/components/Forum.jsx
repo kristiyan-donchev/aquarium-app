@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { listPosts, createPost } from '../lib/forum.js';
+import { initials, avatarColorClass } from '../lib/avatar.js';
 import PostThread from './PostThread.jsx';
 
 function fmtDate(d) {
@@ -105,18 +106,39 @@ export default function Forum({ user, onViewProfile }) {
       ) : (
         <ul className="post-list">
           {posts.map((p) => (
-            <li key={p.id} className="post-list-item">
-              <button className="link-button post-title-link" onClick={() => setSelectedPostId(p.id)}>
-                {p.title}
-              </button>
-              <p className="post-meta">
-                by{' '}
-                <button className="link-button" onClick={() => onViewProfile(p.authorId)}>
-                  {p.authorName}
-                </button>{' '}
-                &middot; {fmtDate(p.createdAt)}
-              </p>
-              <p className="post-snippet">{snippet(p.body)}</p>
+            <li
+              key={p.id}
+              className="post-card post-card-clickable"
+              role="button"
+              tabIndex={0}
+              onClick={() => setSelectedPostId(p.id)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedPostId(p.id);
+                }
+              }}
+            >
+              <div className={`avatar ${avatarColorClass(p.authorName)}`} aria-hidden="true">
+                {initials(p.authorName)}
+              </div>
+              <div className="post-card-body">
+                <h3 className="post-card-title">{p.title}</h3>
+                <p className="post-meta">
+                  by{' '}
+                  <button
+                    className="link-button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onViewProfile(p.authorId);
+                    }}
+                  >
+                    {p.authorName}
+                  </button>{' '}
+                  &middot; {fmtDate(p.createdAt)}
+                </p>
+                <p className="post-snippet">{snippet(p.body)}</p>
+              </div>
             </li>
           ))}
         </ul>

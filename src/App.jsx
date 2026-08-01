@@ -181,7 +181,7 @@ export default function App() {
             className={`tab-button${tab === t.id ? ' active' : ''}`}
             onClick={() => setTab(t.id)}
           >
-            {t.label}
+            {t.id === 'tank' ? activeTank.name : t.label}
             {t.id === 'tank' && activeTank.stockedIds.length > 0 ? ` (${activeTank.stockedIds.length})` : ''}
           </button>
         ))}

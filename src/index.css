@@ -509,6 +509,8 @@ body {
 
 /* Account bar (header) */
 .app-header {
+  position: relative;
+  z-index: 20;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

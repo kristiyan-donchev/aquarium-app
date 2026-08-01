@@ -1,6 +1,6 @@
 # Aquarium Catalog
 
-**Live:** https://kristiyan-donchev.github.io/Tankify/
+**Live:** https://kristiyan-donchev.github.io/tankify/
 
 A freshwater aquarium **species catalog and tank-compatibility tool**. Browse a curated database of
 fish, shrimp, snails, and plants with their real water-parameter needs, build a "My Tank" list of
@@ -156,7 +156,7 @@ npm run preview
 
 ## Deployment
 
-The app is hosted on **GitHub Pages** at https://kristiyan-donchev.github.io/Tankify/, built and
+The app is hosted on **GitHub Pages** at https://kristiyan-donchev.github.io/tankify/, built and
 deployed automatically by [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) on every push
 to `master`. To point this at your own fork/Firebase project:
 

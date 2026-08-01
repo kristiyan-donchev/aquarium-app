@@ -10,7 +10,7 @@ export default function Header({ onViewProfile, onViewSettings }) {
       <div>
         <h1>Aquarium Catalog</h1>
         <p className="tagline">
-          Browse a freshwater species catalog, build "My Tank," and find compatible additions.
+          Browse a freshwater species catalog, build your tanks, and find compatible additions.
         </p>
       </div>
       {user && (

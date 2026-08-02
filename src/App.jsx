@@ -11,7 +11,6 @@ import Profile from './components/Profile.jsx';
 import Settings from './components/Settings.jsx';
 import { useAuth } from './context/AuthContext.jsx';
 import { listTanks, createTank, renameTank, deleteTank, saveTank } from './lib/storage.js';
-import { syncUserProfile } from './lib/users.js';
 
 const TABS = [
   { id: 'catalog', label: 'Catalog' },
@@ -30,12 +29,6 @@ export default function App() {
   const [viewingProfileUid, setViewingProfileUid] = useState(null);
   const [viewingSettings, setViewingSettings] = useState(false);
   const saveTimers = useRef({});
-
-  useEffect(() => {
-    if (!user) return;
-    syncUserProfile(user);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user?.uid]);
 
   useEffect(() => {
     if (!user) return;

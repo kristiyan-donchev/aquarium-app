@@ -40,6 +40,10 @@ export async function updateDisplayName(uid, displayName) {
   await updateDoc(userDocRef(uid), { displayName });
 }
 
+export async function updateAvatar(uid, photoURL) {
+  await updateDoc(userDocRef(uid), { photoURL });
+}
+
 export async function deleteUserProfile(uid) {
   await deleteDoc(userDocRef(uid));
 }

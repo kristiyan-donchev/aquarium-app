@@ -14,7 +14,66 @@
   --water-top: #dff3fa;
   --water-mid: #a9dcee;
   --water-deep: #4fa8cc;
+  --hover-bg: #f1f5f9;
+  --badge-bg: #e2f4f2;
+  --badge-text: var(--primary-dark);
+  --badge-plant-bg: #e6f4e0;
+  --badge-plant-text: #2f6f1f;
+  --badge-shrimp-bg: #fdeee0;
+  --badge-shrimp-text: #a3510a;
+  --badge-snail-bg: #f0e7fb;
+  --badge-snail-text: #6b3fa0;
+  --tag-bg: #eef2f2;
+  --tag-warn-bg: #fef3c7;
+  --tag-warn-text: #92400e;
+  --status-ok-bg: #dcfce7;
+  --status-ok-text: #15803d;
+  --status-caution-bg: #fef3c7;
+  --status-caution-text: #92400e;
+  --status-bad-bg: #fee2e2;
+  --status-bad-text: #b91c1c;
+  --target-summary-bg: #f8fbfb;
+  --danger-hover-text: #ffffff;
+  --error-bg: #fdecec;
+  --error-text: #a3231b;
+  --error-border: #f5c2c2;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #eaf6fb;
+  --panel-bg: #ffffff;
+  --panel-glass: rgba(255, 255, 255, 0.78);
+  --border: #bfe4f0;
+  --text: #16262b;
+  --muted: #4c6b76;
+  --water-top: #dff3fa;
+  --water-mid: #a9dcee;
+  --water-deep: #4fa8cc;
+  --hover-bg: #f1f5f9;
+  --badge-bg: #e2f4f2;
+  --badge-text: var(--primary-dark);
+  --badge-plant-bg: #e6f4e0;
+  --badge-plant-text: #2f6f1f;
+  --badge-shrimp-bg: #fdeee0;
+  --badge-shrimp-text: #a3510a;
+  --badge-snail-bg: #f0e7fb;
+  --badge-snail-text: #6b3fa0;
+  --tag-bg: #eef2f2;
+  --tag-warn-bg: #fef3c7;
+  --tag-warn-text: #92400e;
+  --status-ok-bg: #dcfce7;
+  --status-ok-text: #15803d;
+  --status-caution-bg: #fef3c7;
+  --status-caution-text: #92400e;
+  --status-bad-bg: #fee2e2;
+  --status-bad-text: #b91c1c;
+  --target-summary-bg: #f8fbfb;
+  --danger-hover-text: #ffffff;
+  --error-bg: #fdecec;
+  --error-text: #a3231b;
+  --error-border: #f5c2c2;
 }
 
 * {
@@ -287,23 +346,23 @@ body {
   padding: 3px 8px;
   border-radius: 999px;
   white-space: nowrap;
-  background: #e2f4f2;
-  color: var(--primary-dark);
+  background: var(--badge-bg);
+  color: var(--badge-text);
 }
 
 .badge-plant {
-  background: #e6f4e0;
-  color: #2f6f1f;
+  background: var(--badge-plant-bg);
+  color: var(--badge-plant-text);
 }
 
 .badge-shrimp {
-  background: #fdeee0;
-  color: #a3510a;
+  background: var(--badge-shrimp-bg);
+  color: var(--badge-shrimp-text);
 }
 
 .badge-snail {
-  background: #f0e7fb;
-  color: #6b3fa0;
+  background: var(--badge-snail-bg);
+  color: var(--badge-snail-text);
 }
 
 .status-pill {
@@ -315,18 +374,18 @@ body {
 }
 
 .status-pill-compatible {
-  background: #dcfce7;
-  color: #15803d;
+  background: var(--status-ok-bg);
+  color: var(--status-ok-text);
 }
 
 .status-pill-caution {
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--status-caution-bg);
+  color: var(--status-caution-text);
 }
 
 .status-pill-incompatible {
-  background: #fee2e2;
-  color: #b91c1c;
+  background: var(--status-bad-bg);
+  color: var(--status-bad-text);
 }
 
 .species-params {
@@ -357,15 +416,15 @@ body {
 
 .tag {
   font-size: 11px;
-  background: #eef2f2;
+  background: var(--tag-bg);
   color: var(--muted);
   padding: 3px 8px;
   border-radius: 6px;
 }
 
 .tag-warn {
-  background: #fef3c7;
-  color: #92400e;
+  background: var(--tag-warn-bg);
+  color: var(--tag-warn-text);
 }
 
 .reason-list {
@@ -445,7 +504,7 @@ body {
 }
 
 .target-summary {
-  background: #f8fbfb;
+  background: var(--target-summary-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 14px;
@@ -499,7 +558,7 @@ body {
 }
 
 .secondary-button:hover {
-  background: #f1f5f9;
+  background: var(--hover-bg);
 }
 
 .link-button {
@@ -566,7 +625,7 @@ body {
 }
 
 .account-menu-trigger:hover {
-  background: #f1f5f9;
+  background: var(--hover-bg);
 }
 
 .account-menu-caret {
@@ -601,7 +660,7 @@ body {
 }
 
 .account-menu-dropdown button:hover {
-  background: #f1f5f9;
+  background: var(--hover-bg);
 }
 
 .account-menu-divider {
@@ -684,9 +743,9 @@ body {
 }
 
 .error-banner {
-  background: #fdecec;
-  color: #a3231b;
-  border: 1px solid #f5c2c2;
+  background: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-border);
   border-radius: 8px;
   padding: 8px 10px;
   font-size: 13px;
@@ -806,6 +865,16 @@ body {
   font-size: 12px;
 }
 
+.avatar-lg {
+  width: 80px;
+  height: 80px;
+  font-size: 26px;
+}
+
+.avatar-photo {
+  object-fit: cover;
+}
+
 .avatar-c0 { background: #0e7c8a; }
 .avatar-c1 { background: #d97757; }
 .avatar-c2 { background: #7c5cbf; }
@@ -894,6 +963,17 @@ body {
 }
 
 /* Profile */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 14px 0 20px;
+}
+
+.profile-header h2 {
+  margin: 0;
+}
+
 .profile-edit-name {
   margin-left: 10px;
   font-size: 13px;
@@ -932,6 +1012,42 @@ body {
 .settings-section:first-of-type {
   border-top: none;
   padding-top: 0;
+}
+
+.avatar-settings-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar-settings-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.avatar-settings-actions .secondary-button {
+  width: auto;
+  cursor: pointer;
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+.theme-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .settings-form {
@@ -1001,7 +1117,7 @@ body {
 
 .danger-button:hover {
   background: var(--red);
-  color: white;
+  color: var(--danger-hover-text);
 }
 
 /* Aquarium background */
@@ -1110,7 +1226,7 @@ body {
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     color-scheme: dark;
     --bg: #0f1a1c;
     --panel-bg: #16262b;
@@ -1121,80 +1237,64 @@ body {
     --water-top: #0d2431;
     --water-mid: #071923;
     --water-deep: #030d14;
+    --hover-bg: #1c2e31;
+    --badge-bg: #123b3f;
+    --badge-text: #6fd6c4;
+    --badge-plant-bg: #1c3315;
+    --badge-plant-text: #8fd66f;
+    --badge-shrimp-bg: #3a2410;
+    --badge-shrimp-text: #e6a25c;
+    --badge-snail-bg: #2a1f3d;
+    --badge-snail-text: #c39bef;
+    --tag-bg: #1c2e31;
+    --tag-warn-bg: #3b2a12;
+    --tag-warn-text: #fbbf24;
+    --status-ok-bg: #113321;
+    --status-ok-text: #4ade80;
+    --status-caution-bg: #3b2a12;
+    --status-caution-text: #fbbf24;
+    --status-bad-bg: #3b1414;
+    --status-bad-text: #f87171;
+    --target-summary-bg: #10201f;
+    --danger-hover-text: #16262b;
+    --error-bg: #3b1414;
+    --error-text: #f87171;
+    --error-border: #5c1f1f;
   }
+}
 
-  .badge {
-    background: #123b3f;
-    color: #6fd6c4;
-  }
-
-  .badge-plant {
-    background: #1c3315;
-    color: #8fd66f;
-  }
-
-  .badge-shrimp {
-    background: #3a2410;
-    color: #e6a25c;
-  }
-
-  .badge-snail {
-    background: #2a1f3d;
-    color: #c39bef;
-  }
-
-  .tag {
-    background: #1c2e31;
-    color: var(--muted);
-  }
-
-  .tag-warn {
-    background: #3b2a12;
-    color: #fbbf24;
-  }
-
-  .status-pill-compatible {
-    background: #113321;
-    color: #4ade80;
-  }
-
-  .status-pill-caution {
-    background: #3b2a12;
-    color: #fbbf24;
-  }
-
-  .status-pill-incompatible {
-    background: #3b1414;
-    color: #f87171;
-  }
-
-  .target-summary {
-    background: #10201f;
-  }
-
-  .secondary-button {
-    color: var(--text);
-  }
-
-  .secondary-button:hover {
-    background: #1c2e31;
-  }
-
-  .account-menu-trigger:hover {
-    background: #1c2e31;
-  }
-
-  .account-menu-dropdown button:hover {
-    background: #1c2e31;
-  }
-
-  .danger-button:hover {
-    color: #16262b;
-  }
-
-  .error-banner {
-    background: #3b1414;
-    color: #f87171;
-    border-color: #5c1f1f;
-  }
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0f1a1c;
+  --panel-bg: #16262b;
+  --panel-glass: rgba(18, 32, 36, 0.72);
+  --border: #274045;
+  --text: #e6f0f1;
+  --muted: #93a8ac;
+  --water-top: #0d2431;
+  --water-mid: #071923;
+  --water-deep: #030d14;
+  --hover-bg: #1c2e31;
+  --badge-bg: #123b3f;
+  --badge-text: #6fd6c4;
+  --badge-plant-bg: #1c3315;
+  --badge-plant-text: #8fd66f;
+  --badge-shrimp-bg: #3a2410;
+  --badge-shrimp-text: #e6a25c;
+  --badge-snail-bg: #2a1f3d;
+  --badge-snail-text: #c39bef;
+  --tag-bg: #1c2e31;
+  --tag-warn-bg: #3b2a12;
+  --tag-warn-text: #fbbf24;
+  --status-ok-bg: #113321;
+  --status-ok-text: #4ade80;
+  --status-caution-bg: #3b2a12;
+  --status-caution-text: #fbbf24;
+  --status-bad-bg: #3b1414;
+  --status-bad-text: #f87171;
+  --target-summary-bg: #10201f;
+  --danger-hover-text: #16262b;
+  --error-bg: #3b1414;
+  --error-text: #f87171;
+  --error-border: #5c1f1f;
 }

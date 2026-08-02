@@ -11,9 +11,18 @@ import {
 } from 'firebase/auth';
 import { auth, googleProvider } from '../lib/firebase.js';
 import { useAuth } from '../context/AuthContext.jsx';
-import { updateDisplayName, deleteUserProfile } from '../lib/users.js';
+import { updateDisplayName, updateAvatar, deleteUserProfile } from '../lib/users.js';
 import { listTanks, deleteTank } from '../lib/storage.js';
 import { listPostsByAuthor, deletePost } from '../lib/forum.js';
+import { fileToAvatarDataUrl } from '../lib/imageResize.js';
+import { getStoredTheme, setStoredTheme } from '../lib/theme.js';
+import UserAvatar from './UserAvatar.jsx';
+
+const THEME_OPTIONS = [
+  { value: 'system', label: 'Match system' },
+  { value: 'light', label: 'Light' },
+  { value: 'dark', label: 'Dark' },
+];
 
 function friendlyError(err) {
   const code = err?.code || '';
@@ -32,8 +41,14 @@ function friendlyError(err) {
 }
 
 export default function Settings({ user, onBack }) {
-  const { refreshUser, logOut } = useAuth();
+  const { profile, refreshUser, refreshProfile, logOut } = useAuth();
   const isPasswordProvider = user.providerData?.some((p) => p.providerId === 'password');
+
+  const [avatarBusy, setAvatarBusy] = useState(false);
+  const [avatarError, setAvatarError] = useState('');
+  const [avatarStatus, setAvatarStatus] = useState('');
+
+  const [theme, setTheme] = useState(getStoredTheme());
 
   const [nameInput, setNameInput] = useState(user.displayName || '');
   const [nameStatus, setNameStatus] = useState('');
@@ -55,6 +70,45 @@ export default function Settings({ user, onBack }) {
   const [deletePassword, setDeletePassword] = useState('');
   const [deleteError, setDeleteError] = useState('');
   const [deleteBusy, setDeleteBusy] = useState(false);
+
+  async function handleAvatarChange(e) {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+    setAvatarError('');
+    setAvatarStatus('');
+    setAvatarBusy(true);
+    try {
+      const dataUrl = await fileToAvatarDataUrl(file);
+      await updateAvatar(user.uid, dataUrl);
+      await refreshProfile();
+      setAvatarStatus('Saved.');
+    } catch (err) {
+      setAvatarError(err.message || 'Could not update your photo.');
+    } finally {
+      setAvatarBusy(false);
+    }
+  }
+
+  async function handleRemoveAvatar() {
+    setAvatarError('');
+    setAvatarStatus('');
+    setAvatarBusy(true);
+    try {
+      await updateAvatar(user.uid, null);
+      await refreshProfile();
+      setAvatarStatus('Photo removed.');
+    } catch (err) {
+      setAvatarError(err.message || 'Could not remove your photo.');
+    } finally {
+      setAvatarBusy(false);
+    }
+  }
+
+  function handleThemeChange(value) {
+    setTheme(value);
+    setStoredTheme(value);
+  }
 
   async function handleSaveName(e) {
     e.preventDefault();
@@ -175,6 +229,32 @@ export default function Settings({ user, onBack }) {
       <h2>Settings</h2>
 
       <section className="settings-section">
+        <h3>Profile picture</h3>
+        <div className="avatar-settings-row">
+          <UserAvatar name={user.displayName || user.email} photoURL={profile?.photoURL} size="lg" />
+          <div className="avatar-settings-actions">
+            <label className="secondary-button">
+              {avatarBusy ? 'Uploading…' : 'Change photo'}
+              <input
+                type="file"
+                accept="image/*"
+                className="file-input-hidden"
+                onChange={handleAvatarChange}
+                disabled={avatarBusy}
+              />
+            </label>
+            {profile?.photoURL && (
+              <button type="button" className="link-button" onClick={handleRemoveAvatar} disabled={avatarBusy}>
+                Remove photo
+              </button>
+            )}
+          </div>
+        </div>
+        {avatarError && <p className="error-banner">{avatarError}</p>}
+        {avatarStatus && <p className="hint">{avatarStatus}</p>}
+      </section>
+
+      <section className="settings-section">
         <h3>Display name</h3>
         <form onSubmit={handleSaveName} className="settings-form">
           <input value={nameInput} onChange={(e) => setNameInput(e.target.value)} maxLength={40} required />
@@ -183,6 +263,24 @@ export default function Settings({ user, onBack }) {
           </button>
         </form>
         {nameStatus && <p className="hint">{nameStatus}</p>}
+      </section>
+
+      <section className="settings-section">
+        <h3>Appearance</h3>
+        <div className="theme-options" role="radiogroup" aria-label="Theme">
+          {THEME_OPTIONS.map((opt) => (
+            <label key={opt.value} className="theme-option">
+              <input
+                type="radio"
+                name="theme"
+                value={opt.value}
+                checked={theme === opt.value}
+                onChange={() => handleThemeChange(opt.value)}
+              />
+              {opt.label}
+            </label>
+          ))}
+        </div>
       </section>
 
       {isPasswordProvider ? (

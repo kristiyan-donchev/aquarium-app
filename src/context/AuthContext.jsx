@@ -8,7 +8,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { auth, googleProvider, firebaseConfigured } from '../lib/firebase.js';
-import { createUserProfile } from '../lib/users.js';
+import { createUserProfile, syncUserProfile, getUserProfile } from '../lib/users.js';
 
 const AuthContext = createContext(null);
 
@@ -17,19 +17,33 @@ const notConfiguredError = () =>
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
   const [authLoading, setAuthLoading] = useState(firebaseConfigured);
 
   useEffect(() => {
     if (!firebaseConfigured) return;
-    const unsubscribe = onAuthStateChanged(auth, (u) => {
+    const unsubscribe = onAuthStateChanged(auth, async (u) => {
       setUser(u);
+      if (u) {
+        await syncUserProfile(u);
+        setProfile(await getUserProfile(u.uid));
+      } else {
+        setProfile(null);
+      }
       setAuthLoading(false);
     });
     return unsubscribe;
   }, []);
 
+  async function refreshProfile() {
+    if (!auth.currentUser) return;
+    setProfile(await getUserProfile(auth.currentUser.uid));
+  }
+
   const value = {
     user,
+    profile,
+    refreshProfile,
     authLoading,
     signUp: firebaseConfigured
       ? async (email, password, displayName) => {

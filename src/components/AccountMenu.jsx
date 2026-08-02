@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext.jsx';
+import UserAvatar from './UserAvatar.jsx';
 
 export default function AccountMenu({ onViewProfile, onViewSettings }) {
-  const { user, logOut } = useAuth();
+  const { user, profile, logOut } = useAuth();
   const [open, setOpen] = useState(false);
   const rootRef = useRef(null);
 
@@ -28,6 +29,7 @@ export default function AccountMenu({ onViewProfile, onViewSettings }) {
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
       >
+        <UserAvatar name={user.displayName || user.email} photoURL={profile?.photoURL} size="sm" />
         {user.displayName || user.email}
         <span className="account-menu-caret">▾</span>
       </button>

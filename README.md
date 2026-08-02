@@ -12,14 +12,21 @@ parameter conflicts spelled out, not just a yes/no.
 > strain/locale of every species. They're a solid starting point, not a substitute for further
 > research before you stock a real tank — especially for anything borderline or for
 > breeding-specific conditions.
+>
+> **Scope:** the aquarium hobby spans roughly 3,000 fish species alone, plus inverts and plants —
+> this catalog covers 129 widely-kept ones, not the whole hobby. It's sized to what can be
+> hand-curated with genuine care about accuracy rather than padded out with guessed numbers for
+> species outside real working knowledge.
 
 ## What it does
 
-- **Species catalog** — 42 real, commonly-kept freshwater species (24 fish, 3 shrimp, 3 snails, 12
-  plants) with: temperature range (°F), pH range, GH/KH hardness range (dGH/dKH), minimum tank size
-  (gallons), lighting need (plants), diet, temperament, schooling minimums, water type, and flags for
-  fin-nipping, long fins, and shrimp/small-fish predation — plus a free-text notes field with the
-  hobby-relevant caveats for that species.
+- **Species catalog** — 129 real, widely-kept freshwater species (93 fish, 7 shrimp, 6 snails, 23
+  plants) spanning tetras, barbs, danios/rasboras, corydoras/loaches/plecos, gouramis, livebearers,
+  killifish, rainbowfish, and both New World and African rift-lake cichlids, with: temperature range
+  (°F), pH range, GH/KH hardness range (dGH/dKH), minimum tank size (gallons), lighting need (plants),
+  diet, temperament, schooling minimums, water type, and flags for fin-nipping, long fins, and
+  shrimp/small-fish predation — plus a free-text notes field with the hobby-relevant caveats for that
+  species.
 - **Browse & filter** the catalog independently of your tank, by category, water type, temperament,
   or difficulty, with text search by common/scientific name.
 - **"My Tank"** — add/remove species you keep, and optionally set your tank's own parameters

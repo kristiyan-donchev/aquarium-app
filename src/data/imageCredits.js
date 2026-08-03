@@ -2,6 +2,13 @@
 // Fetched from the Commons API (Artist / LicenseShortName / LicenseUrl fields) --
 // see each sourceUrl for the original file page and full license text.
 export const imageCredits = {
+  'red-eye-tetra': {
+    file: 'Red_eye_tetra.jpg',
+    author: 'Jhartshorn',
+    license: 'CC BY-SA 4.0',
+    licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+    sourceUrl: 'https://commons.wikimedia.org/wiki/File:Red_eye_tetra.jpg',
+  },
   'betta': {
     file: 'HM_Orange_M_Sarawut.jpg',
     author: 'Daniella Vereeken',

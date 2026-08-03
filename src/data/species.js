@@ -907,6 +907,7 @@ export const species = [
   // treat individual numbers as a solid starting point rather than gospel, more than ever.
   {
     id: 'black-neon-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Black_neon_tetra.jpg/330px-Black_neon_tetra.jpg',
     name: 'Black Neon Tetra',
     scientificName: 'Hyphessobrycon herbertaxelrodi',
     category: 'fish',
@@ -929,6 +930,7 @@ export const species = [
   },
   {
     id: 'bleeding-heart-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Hyphessobrycon_erythrostigma_-_Wilhelma_01.jpg/330px-Hyphessobrycon_erythrostigma_-_Wilhelma_01.jpg',
     name: 'Bleeding Heart Tetra',
     scientificName: 'Hyphessobrycon erythrostigma',
     category: 'fish',
@@ -951,6 +953,7 @@ export const species = [
   },
   {
     id: 'buenos-aires-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Hyphessobrycon_anisitsi.jpg/330px-Hyphessobrycon_anisitsi.jpg',
     name: 'Buenos Aires Tetra',
     scientificName: 'Hemigrammus caudovittatus',
     category: 'fish',
@@ -973,6 +976,7 @@ export const species = [
   },
   {
     id: 'congo-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Phenacogrammus_interruptus_%28aka%29.jpg/330px-Phenacogrammus_interruptus_%28aka%29.jpg',
     name: 'Congo Tetra',
     scientificName: 'Phenacogrammus interruptus',
     category: 'fish',
@@ -995,6 +999,7 @@ export const species = [
   },
   {
     id: 'diamond-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Diamond_tetra.JPG/330px-Diamond_tetra.JPG',
     name: 'Diamond Tetra',
     scientificName: 'Moenkhausia pittieri',
     category: 'fish',
@@ -1017,6 +1022,7 @@ export const species = [
   },
   {
     id: 'emperor-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Emperor_tetra.jpg/330px-Emperor_tetra.jpg',
     name: 'Emperor Tetra',
     scientificName: 'Nematobrycon palmeri',
     category: 'fish',
@@ -1039,6 +1045,7 @@ export const species = [
   },
   {
     id: 'glowlight-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Hemigrammus_erythrozonus.jpg/330px-Hemigrammus_erythrozonus.jpg',
     name: 'Glowlight Tetra',
     scientificName: 'Hemigrammus erythrozonus',
     category: 'fish',
@@ -1061,6 +1068,7 @@ export const species = [
   },
   {
     id: 'green-neon-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Paracheirodon_simulans.jpg/330px-Paracheirodon_simulans.jpg',
     name: 'Green Neon Tetra',
     scientificName: 'Paracheirodon simulans',
     category: 'fish',
@@ -1083,6 +1091,7 @@ export const species = [
   },
   {
     id: 'lemon-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Hyphessobrycon_pulchripinnis.jpg/330px-Hyphessobrycon_pulchripinnis.jpg',
     name: 'Lemon Tetra',
     scientificName: 'Hyphessobrycon pulchripinnis',
     category: 'fish',
@@ -1105,6 +1114,7 @@ export const species = [
   },
   {
     id: 'penguin-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Thayeria_boehlkei.jpg/330px-Thayeria_boehlkei.jpg',
     name: 'Penguin Tetra',
     scientificName: 'Thayeria boehlkei',
     category: 'fish',
@@ -1127,6 +1137,7 @@ export const species = [
   },
   {
     id: 'red-phantom-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Red_phantom_tetra_%28Hyphessobrycon_sweglesi%29_%2816037457836%29.jpg/330px-Red_phantom_tetra_%28Hyphessobrycon_sweglesi%29_%2816037457836%29.jpg',
     name: 'Red Phantom Tetra',
     scientificName: 'Hyphessobrycon sweglesi',
     category: 'fish',
@@ -1149,6 +1160,7 @@ export const species = [
   },
   {
     id: 'serpae-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Hyphessobrycon_serpae_-_Serpae_Tetra.jpg/330px-Hyphessobrycon_serpae_-_Serpae_Tetra.jpg',
     name: 'Serpae Tetra',
     scientificName: 'Hyphessobrycon eques',
     category: 'fish',
@@ -1171,6 +1183,7 @@ export const species = [
   },
   {
     id: 'silvertip-tetra',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Kobbertetra_Hasemania_nana.jpg/330px-Kobbertetra_Hasemania_nana.jpg',
     name: 'Silvertip Tetra',
     scientificName: 'Hasemania nana',
     category: 'fish',
@@ -1193,6 +1206,7 @@ export const species = [
   },
   {
     id: 'odessa-barb',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Pethia_padamya.jpg/330px-Pethia_padamya.jpg',
     name: 'Odessa Barb',
     scientificName: 'Pethia padamya',
     category: 'fish',
@@ -1215,6 +1229,7 @@ export const species = [
   },
   {
     id: 'rosy-barb',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Puntius_conchonius.jpg/330px-Puntius_conchonius.jpg',
     name: 'Rosy Barb',
     scientificName: 'Pethia conchonius',
     category: 'fish',
@@ -1237,6 +1252,7 @@ export const species = [
   },
   {
     id: 'gold-barb',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Puntius_semifasciolatus_%28aka%29.jpg/330px-Puntius_semifasciolatus_%28aka%29.jpg',
     name: 'Gold Barb',
     scientificName: 'Barbodes semifasciolatus',
     category: 'fish',
@@ -1259,6 +1275,7 @@ export const species = [
   },
   {
     id: 'checkerboard-barb',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Puntius_oligolepis.jpg/330px-Puntius_oligolepis.jpg',
     name: 'Checkerboard Barb',
     scientificName: 'Oliotius oligolepis',
     category: 'fish',
@@ -1281,6 +1298,7 @@ export const species = [
   },
   {
     id: 'denison-barb',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Puntius_denisonii_-_Wilhelma_01.jpg/330px-Puntius_denisonii_-_Wilhelma_01.jpg',
     name: 'Denison Barb',
     scientificName: 'Sahyadria denisonii',
     category: 'fish',
@@ -1303,6 +1321,7 @@ export const species = [
   },
   {
     id: 'black-ruby-barb',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Black_Ruby_Barb_700.jpg/330px-Black_Ruby_Barb_700.jpg',
     name: 'Black Ruby Barb',
     scientificName: 'Pethia nigrofasciata',
     category: 'fish',
@@ -1325,6 +1344,7 @@ export const species = [
   },
   {
     id: 'pearl-danio',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Danio_albolineatus.jpg/330px-Danio_albolineatus.jpg',
     name: 'Pearl Danio',
     scientificName: 'Danio albolineatus',
     category: 'fish',
@@ -1347,6 +1367,7 @@ export const species = [
   },
   {
     id: 'giant-danio',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Devario_aequipinnatus.JPG/330px-Devario_aequipinnatus.JPG',
     name: 'Giant Danio',
     scientificName: 'Devario aequipinnatus',
     category: 'fish',
@@ -1369,6 +1390,7 @@ export const species = [
   },
   {
     id: 'lambchop-rasbora',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Trigonostigma_espei.jpg/330px-Trigonostigma_espei.jpg',
     name: 'Lambchop Rasbora',
     scientificName: 'Trigonostigma espei',
     category: 'fish',
@@ -1391,6 +1413,7 @@ export const species = [
   },
   {
     id: 'scissortail-rasbora',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Rasbora_trilineata.jpg/330px-Rasbora_trilineata.jpg',
     name: 'Scissortail Rasbora',
     scientificName: 'Rasbora trilineata',
     category: 'fish',
@@ -1413,6 +1436,7 @@ export const species = [
   },
   {
     id: 'white-cloud-mountain-minnow',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/White_Cloud_Mountain_Minnow_%28Tanichthys_albonubes%29.jpg/330px-White_Cloud_Mountain_Minnow_%28Tanichthys_albonubes%29.jpg',
     name: 'White Cloud Mountain Minnow',
     scientificName: 'Tanichthys albonubes',
     category: 'fish',
@@ -1435,6 +1459,7 @@ export const species = [
   },
   {
     id: 'panda-corydoras',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Panda_Corydoras.jpg/330px-Panda_Corydoras.jpg',
     name: 'Panda Corydoras',
     scientificName: 'Corydoras panda',
     category: 'fish',
@@ -1457,6 +1482,7 @@ export const species = [
   },
   {
     id: 'sterbai-corydoras',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Corydoras_sterbai_02.jpg/330px-Corydoras_sterbai_02.jpg',
     name: "Sterba's Corydoras",
     scientificName: 'Corydoras sterbai',
     category: 'fish',
@@ -1479,6 +1505,7 @@ export const species = [
   },
   {
     id: 'peppered-corydoras',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Corydoras_paleatus_matt.jpg/330px-Corydoras_paleatus_matt.jpg',
     name: 'Peppered Corydoras',
     scientificName: 'Corydoras paleatus',
     category: 'fish',
@@ -1501,6 +1528,7 @@ export const species = [
   },
   {
     id: 'julii-corydoras',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Corydoras_julii.jpg/330px-Corydoras_julii.jpg',
     name: 'Julii Corydoras',
     scientificName: 'Corydoras julii',
     category: 'fish',
@@ -1523,6 +1551,7 @@ export const species = [
   },
   {
     id: 'clown-loach',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Chromobotia_macracanthus.jpg/330px-Chromobotia_macracanthus.jpg',
     name: 'Clown Loach',
     scientificName: 'Chromobotia macracanthus',
     category: 'fish',
@@ -1545,6 +1574,7 @@ export const species = [
   },
   {
     id: 'yoyo-loach',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Botia_almorhae.jpg/330px-Botia_almorhae.jpg',
     name: 'Yoyo Loach',
     scientificName: 'Botia almorhae',
     category: 'fish',
@@ -1567,6 +1597,7 @@ export const species = [
   },
   {
     id: 'dojo-loach',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Misgurnus_anguillicaudatus_%282678935266%29.jpg/330px-Misgurnus_anguillicaudatus_%282678935266%29.jpg',
     name: 'Dojo Loach',
     scientificName: 'Misgurnus anguillicaudatus',
     category: 'fish',
@@ -1589,6 +1620,7 @@ export const species = [
   },
   {
     id: 'common-pleco',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Pterygoplichthys_pardalis_700.jpg/330px-Pterygoplichthys_pardalis_700.jpg',
     name: 'Common Pleco',
     scientificName: 'Pterygoplichthys pardalis',
     category: 'fish',
@@ -1611,6 +1643,7 @@ export const species = [
   },
   {
     id: 'twig-catfish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Farlowella_vittata_-_20120228.jpeg/330px-Farlowella_vittata_-_20120228.jpeg',
     name: 'Twig Catfish',
     scientificName: 'Farlowella sp.',
     category: 'fish',
@@ -1633,6 +1666,7 @@ export const species = [
   },
   {
     id: 'glass-catfish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Kryptopterus_vitreolus.jpg/330px-Kryptopterus_vitreolus.jpg',
     name: 'Glass Catfish',
     scientificName: 'Kryptopterus vitreolus',
     category: 'fish',
@@ -1655,6 +1689,7 @@ export const species = [
   },
   {
     id: 'upside-down-catfish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Synodontis_nigriventris_53146421.jpg/330px-Synodontis_nigriventris_53146421.jpg',
     name: 'Upside-down Catfish',
     scientificName: 'Synodontis nigriventris',
     category: 'fish',
@@ -1677,6 +1712,7 @@ export const species = [
   },
   {
     id: 'banjo-catfish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Banjo_cat.jpg/330px-Banjo_cat.jpg',
     name: 'Banjo Catfish',
     scientificName: 'Bunocephalus sp.',
     category: 'fish',
@@ -1699,6 +1735,7 @@ export const species = [
   },
   {
     id: 'pearl-gourami',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Trichopodus_leerii.jpg/330px-Trichopodus_leerii.jpg',
     name: 'Pearl Gourami',
     scientificName: 'Trichopodus leerii',
     category: 'fish',
@@ -1721,6 +1758,7 @@ export const species = [
   },
   {
     id: 'sparkling-gourami',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Trichopsis_pumila.jpg/330px-Trichopsis_pumila.jpg',
     name: 'Sparkling Gourami',
     scientificName: 'Trichopsis pumila',
     category: 'fish',
@@ -1743,6 +1781,7 @@ export const species = [
   },
   {
     id: 'three-spot-gourami',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Trichopodus_trichopterus_%283_spot_gourami%2C_Philippines%29_01.jpg/330px-Trichopodus_trichopterus_%283_spot_gourami%2C_Philippines%29_01.jpg',
     name: 'Blue (Three Spot) Gourami',
     scientificName: 'Trichopodus trichopterus',
     category: 'fish',
@@ -1765,6 +1804,7 @@ export const species = [
   },
   {
     id: 'paradise-fish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Macropodus_opercularis_-_side_%28aka%29.jpg/330px-Macropodus_opercularis_-_side_%28aka%29.jpg',
     name: 'Paradise Fish',
     scientificName: 'Macropodus opercularis',
     category: 'fish',
@@ -1787,6 +1827,7 @@ export const species = [
   },
   {
     id: 'chocolate-gourami',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Chocolate_gourami%2C_Sphaerichthys_osphromenoides.jpg/330px-Chocolate_gourami%2C_Sphaerichthys_osphromenoides.jpg',
     name: 'Chocolate Gourami',
     scientificName: 'Sphaerichthys osphromenoides',
     category: 'fish',
@@ -1809,6 +1850,7 @@ export const species = [
   },
   {
     id: 'swordtail',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Xiphophorus_helleri_03.jpg/330px-Xiphophorus_helleri_03.jpg',
     name: 'Swordtail',
     scientificName: 'Xiphophorus hellerii',
     category: 'fish',
@@ -1831,6 +1873,7 @@ export const species = [
   },
   {
     id: 'least-killifish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Dwarf_Livebearer_or_Least_Killifish_%28Heterandria_formosa%29.jpg/330px-Dwarf_Livebearer_or_Least_Killifish_%28Heterandria_formosa%29.jpg',
     name: 'Least Killifish',
     scientificName: 'Heterandria formosa',
     category: 'fish',
@@ -1853,6 +1896,7 @@ export const species = [
   },
   {
     id: 'blue-gularis',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Blueg.jpg/330px-Blueg.jpg',
     name: 'Blue Gularis',
     scientificName: 'Fundulopanchax sjoestedti',
     category: 'fish',
@@ -1875,6 +1919,7 @@ export const species = [
   },
   {
     id: 'golden-wonder-killifish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Aplo_male.jpg/330px-Aplo_male.jpg',
     name: 'Golden Wonder Killifish',
     scientificName: 'Aplocheilus lineatus',
     category: 'fish',
@@ -1897,6 +1942,7 @@ export const species = [
   },
   {
     id: 'clown-killifish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Clown_killi_1.jpg/330px-Clown_killi_1.jpg',
     name: 'Clown Killifish',
     scientificName: 'Epiplatys annulatus',
     category: 'fish',
@@ -1919,6 +1965,7 @@ export const species = [
   },
   {
     id: 'american-flagfish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Jordanella_floridae_182122551.jpg/330px-Jordanella_floridae_182122551.jpg',
     name: 'American Flagfish',
     scientificName: 'Jordanella floridae',
     category: 'fish',
@@ -1941,6 +1988,7 @@ export const species = [
   },
   {
     id: 'boesemani-rainbowfish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Melanotaenia_boesemani_-_IMG_0448.jpg/330px-Melanotaenia_boesemani_-_IMG_0448.jpg',
     name: 'Boesemani Rainbowfish',
     scientificName: 'Melanotaenia boesemani',
     category: 'fish',
@@ -1963,6 +2011,7 @@ export const species = [
   },
   {
     id: 'dwarf-neon-rainbowfish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Diamant_Regenbogenfisch_%28Melanotaenia_praecox%29.jpg/330px-Diamant_Regenbogenfisch_%28Melanotaenia_praecox%29.jpg',
     name: 'Dwarf Neon Rainbowfish',
     scientificName: 'Melanotaenia praecox',
     category: 'fish',
@@ -1985,6 +2034,7 @@ export const species = [
   },
   {
     id: 'turquoise-rainbowfish',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Melanotaenia_lacustris.jpg/330px-Melanotaenia_lacustris.jpg',
     name: 'Turquoise Rainbowfish',
     scientificName: 'Melanotaenia lacustris',
     category: 'fish',
@@ -2007,6 +2057,7 @@ export const species = [
   },
   {
     id: 'german-blue-ram',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Mikrogeophagus_ramirezi_male.jpg/330px-Mikrogeophagus_ramirezi_male.jpg',
     name: 'German Blue Ram',
     scientificName: 'Mikrogeophagus ramirezi',
     category: 'fish',
@@ -2029,6 +2080,7 @@ export const species = [
   },
   {
     id: 'bolivian-ram',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Mikrogeophagus_altispinosus4.JPG/330px-Mikrogeophagus_altispinosus4.JPG',
     name: 'Bolivian Ram',
     scientificName: 'Mikrogeophagus altispinosus',
     category: 'fish',
@@ -2051,6 +2103,7 @@ export const species = [
   },
   {
     id: 'discus',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Symphysodon_aequifasciatus_-_Karlsruhe_Zoo_03.jpg/330px-Symphysodon_aequifasciatus_-_Karlsruhe_Zoo_03.jpg',
     name: 'Discus',
     scientificName: 'Symphysodon spp.',
     category: 'fish',
@@ -2073,6 +2126,7 @@ export const species = [
   },
   {
     id: 'oscar',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Astronotus_ocellatus.jpg/330px-Astronotus_ocellatus.jpg',
     name: 'Oscar',
     scientificName: 'Astronotus ocellatus',
     category: 'fish',
@@ -2095,6 +2149,7 @@ export const species = [
   },
   {
     id: 'firemouth-cichlid',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Thorichthys_meeki_-_Wilhelma_01.jpg/330px-Thorichthys_meeki_-_Wilhelma_01.jpg',
     name: 'Firemouth Cichlid',
     scientificName: 'Thorichthys meeki',
     category: 'fish',
@@ -2117,6 +2172,7 @@ export const species = [
   },
   {
     id: 'convict-cichlid',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Convict_cichlid_%28Amatitlania_nigrofasciata%29.jpg/330px-Convict_cichlid_%28Amatitlania_nigrofasciata%29.jpg',
     name: 'Convict Cichlid',
     scientificName: 'Amatitlania nigrofasciata',
     category: 'fish',
@@ -2139,6 +2195,7 @@ export const species = [
   },
   {
     id: 'jack-dempsey',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Rocio_octofasciata_245838487.jpg/330px-Rocio_octofasciata_245838487.jpg',
     name: 'Jack Dempsey',
     scientificName: 'Rocio octofasciata',
     category: 'fish',
@@ -2161,6 +2218,7 @@ export const species = [
   },
   {
     id: 'blue-acara',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Aequidens_pulcher.jpg/330px-Aequidens_pulcher.jpg',
     name: 'Blue Acara',
     scientificName: 'Andinoacara pulcher',
     category: 'fish',
@@ -2183,6 +2241,7 @@ export const species = [
   },
   {
     id: 'keyhole-cichlid',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Cleithracara_maronii-Seite.jpg/330px-Cleithracara_maronii-Seite.jpg',
     name: 'Keyhole Cichlid',
     scientificName: 'Cleithracara maronii',
     category: 'fish',
@@ -2205,6 +2264,7 @@ export const species = [
   },
   {
     id: 'severum',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Heros_severus_in_Yekaterinburg_Zoo_%28March_2023%29_-_1.jpg/330px-Heros_severus_in_Yekaterinburg_Zoo_%28March_2023%29_-_1.jpg',
     name: 'Severum',
     scientificName: 'Heros severus',
     category: 'fish',
@@ -2227,6 +2287,7 @@ export const species = [
   },
   {
     id: 'kribensis',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Pelvicachromis_pulcher_%28male%29.jpg/330px-Pelvicachromis_pulcher_%28male%29.jpg',
     name: 'Kribensis',
     scientificName: 'Pelvicachromis pulcher',
     category: 'fish',
@@ -2249,6 +2310,7 @@ export const species = [
   },
   {
     id: 'cockatoo-cichlid',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Apistogramma_cacatuoides.jpg/330px-Apistogramma_cacatuoides.jpg',
     name: 'Cockatoo Cichlid',
     scientificName: 'Apistogramma cacatuoides',
     category: 'fish',
@@ -2271,6 +2333,7 @@ export const species = [
   },
   {
     id: 'yellow-lab-cichlid',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Cichlidae_Labidochromis_caeruleus_2.jpg/330px-Cichlidae_Labidochromis_caeruleus_2.jpg',
     name: 'Yellow Lab',
     scientificName: 'Labidochromis caeruleus',
     category: 'fish',
@@ -2293,6 +2356,7 @@ export const species = [
   },
   {
     id: 'electric-blue-hap',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Electric_blue_hap.jpg/330px-Electric_blue_hap.jpg',
     name: 'Electric Blue Hap',
     scientificName: 'Sciaenochromis fryeri',
     category: 'fish',
@@ -2315,6 +2379,7 @@ export const species = [
   },
   {
     id: 'red-zebra-mbuna',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Hal_-_Maylandia_estherae_-_1.jpg/330px-Hal_-_Maylandia_estherae_-_1.jpg',
     name: 'Red Zebra Mbuna',
     scientificName: 'Maylandia estherae',
     category: 'fish',
@@ -2337,6 +2402,7 @@ export const species = [
   },
   {
     id: 'auratus-cichlid',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Melanochromis_auratus_%28male%29.jpg/330px-Melanochromis_auratus_%28male%29.jpg',
     name: 'Auratus',
     scientificName: 'Melanochromis auratus',
     category: 'fish',
@@ -2359,6 +2425,7 @@ export const species = [
   },
   {
     id: 'peacock-cichlid',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Aulonocara_nyassae_A.jpg/330px-Aulonocara_nyassae_A.jpg',
     name: 'Peacock Cichlid',
     scientificName: 'Aulonocara sp.',
     category: 'fish',
@@ -2381,6 +2448,7 @@ export const species = [
   },
   {
     id: 'bumblebee-cichlid',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Bumblebeecichlid.jpg/330px-Bumblebeecichlid.jpg',
     name: 'Bumblebee Cichlid',
     scientificName: 'Pseudotropheus crabro',
     category: 'fish',
@@ -2403,6 +2471,7 @@ export const species = [
   },
   {
     id: 'frontosa',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cyphotilapia_frontosa_-_Karlsruhe_Zoo_01.jpg/330px-Cyphotilapia_frontosa_-_Karlsruhe_Zoo_01.jpg',
     name: 'Frontosa',
     scientificName: 'Cyphotilapia frontosa',
     category: 'fish',
@@ -2425,6 +2494,7 @@ export const species = [
   },
   {
     id: 'dwarf-puffer',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Carinotetraodon_travancoricus_hi_res.jpg/330px-Carinotetraodon_travancoricus_hi_res.jpg',
     name: 'Dwarf Puffer',
     scientificName: 'Carinotetraodon travancoricus',
     category: 'fish',
@@ -2449,6 +2519,7 @@ export const species = [
   // ---------------------------------------------------------------- MORE SHRIMP ----------------------------------------------------------------
   {
     id: 'bamboo-shrimp',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Atyopsis_moluccensis.jpg/330px-Atyopsis_moluccensis.jpg',
     name: 'Bamboo Shrimp',
     scientificName: 'Atyopsis moluccensis',
     category: 'shrimp',
@@ -2471,6 +2542,7 @@ export const species = [
   },
   {
     id: 'vampire-shrimp',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Atya_gabonensis.JPG/330px-Atya_gabonensis.JPG',
     name: 'Vampire Shrimp',
     scientificName: 'Atya gabonensis',
     category: 'shrimp',
@@ -2493,6 +2565,7 @@ export const species = [
   },
   {
     id: 'blue-velvet-shrimp',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Blue_Neocaridina_davidi_shrimps.jpg/330px-Blue_Neocaridina_davidi_shrimps.jpg',
     name: 'Blue Velvet Shrimp',
     scientificName: 'Neocaridina davidi',
     category: 'shrimp',
@@ -2515,6 +2588,7 @@ export const species = [
   },
   {
     id: 'crystal-red-shrimp',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Caridina_cf._cantonensis_-_crystal_red_-_adult_and_baby.JPG/330px-Caridina_cf._cantonensis_-_crystal_red_-_adult_and_baby.JPG',
     name: 'Crystal Red Shrimp',
     scientificName: 'Caridina cantonensis',
     category: 'shrimp',
@@ -2539,6 +2613,7 @@ export const species = [
   // ---------------------------------------------------------------- MORE SNAILS ----------------------------------------------------------------
   {
     id: 'assassin-snail',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Anentome_helena_01.JPG/330px-Anentome_helena_01.JPG',
     name: 'Assassin Snail',
     scientificName: 'Clea helena',
     category: 'snail',
@@ -2561,6 +2636,7 @@ export const species = [
   },
   {
     id: 'malaysian-trumpet-snail',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Melanoides_tuberculata_001.JPG/330px-Melanoides_tuberculata_001.JPG',
     name: 'Malaysian Trumpet Snail',
     scientificName: 'Melanoides tuberculata',
     category: 'snail',
@@ -2583,6 +2659,7 @@ export const species = [
   },
   {
     id: 'rabbit-snail',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Tylomelania_sp.jpg/330px-Tylomelania_sp.jpg',
     name: 'Rabbit Snail',
     scientificName: 'Tylomelania sp.',
     category: 'snail',
@@ -2607,6 +2684,7 @@ export const species = [
   // ---------------------------------------------------------------- MORE PLANTS ----------------------------------------------------------------
   {
     id: 'ludwigia-repens',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ludwigia_repens_kz01.jpg/330px-Ludwigia_repens_kz01.jpg',
     name: 'Ludwigia repens',
     scientificName: 'Ludwigia repens',
     category: 'plant',
@@ -2622,6 +2700,7 @@ export const species = [
   },
   {
     id: 'duckweed',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Lemna_minor1.jpg/330px-Lemna_minor1.jpg',
     name: 'Duckweed',
     scientificName: 'Lemna minor',
     category: 'plant',
@@ -2637,6 +2716,7 @@ export const species = [
   },
   {
     id: 'red-root-floater',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Phyllanthus_fluitans_clusters.jpg/330px-Phyllanthus_fluitans_clusters.jpg',
     name: 'Red Root Floater',
     scientificName: 'Phyllanthus fluitans',
     category: 'plant',
@@ -2652,6 +2732,7 @@ export const species = [
   },
   {
     id: 'frogbit',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Limnobium_laevigatum.jpg/330px-Limnobium_laevigatum.jpg',
     name: 'Frogbit',
     scientificName: 'Limnobium laevigatum',
     category: 'plant',
@@ -2667,6 +2748,7 @@ export const species = [
   },
   {
     id: 'monte-carlo',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Micranthemum_tweediei-1-veda_aquarium-bengaluru-India.jpg/330px-Micranthemum_tweediei-1-veda_aquarium-bengaluru-India.jpg',
     name: 'Monte Carlo',
     scientificName: 'Micranthemum tweediei',
     category: 'plant',
@@ -2682,6 +2764,7 @@ export const species = [
   },
   {
     id: 'christmas-moss',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Christmas_moss_and_riccia_%2814441185564%29.jpg/330px-Christmas_moss_and_riccia_%2814441185564%29.jpg',
     name: 'Christmas Moss',
     scientificName: 'Vesicularia montagnei',
     category: 'plant',
@@ -2697,6 +2780,7 @@ export const species = [
   },
   {
     id: 'cabomba',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Cabomba_caroliniana_leaves.jpg/330px-Cabomba_caroliniana_leaves.jpg',
     name: 'Cabomba',
     scientificName: 'Cabomba caroliniana',
     category: 'plant',
@@ -2712,6 +2796,7 @@ export const species = [
   },
   {
     id: 'bacopa-monnieri',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Bacopa_monnieri_kz02.jpg/330px-Bacopa_monnieri_kz02.jpg',
     name: 'Bacopa monnieri',
     scientificName: 'Bacopa monnieri',
     category: 'plant',
@@ -2727,6 +2812,7 @@ export const species = [
   },
   {
     id: 'pogostemon-stellatus-octopus',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Pogostemon_stellatus_kz01.jpg/330px-Pogostemon_stellatus_kz01.jpg',
     name: "Pogostemon stellatus 'Octopus'",
     scientificName: 'Pogostemon stellatus',
     category: 'plant',
@@ -2742,6 +2828,7 @@ export const species = [
   },
   {
     id: 'staurogyne-repens',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/S._repens_in_a_tank.jpg/330px-S._repens_in_a_tank.jpg',
     name: 'Staurogyne repens',
     scientificName: 'Staurogyne repens',
     category: 'plant',

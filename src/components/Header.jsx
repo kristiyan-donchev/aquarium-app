@@ -8,7 +8,7 @@ export default function Header({ onViewProfile, onViewSettings }) {
   return (
     <header className="app-header">
       <div>
-        <h1>Aquarium Catalog</h1>
+        <h1>Tankify</h1>
         <p className="tagline">
           Browse a freshwater species catalog, build your tanks, and find compatible additions.
         </p>

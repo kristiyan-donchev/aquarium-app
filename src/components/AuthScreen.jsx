@@ -57,7 +57,7 @@ export default function AuthScreen() {
   return (
     <div className="app auth-screen">
       <div className="panel auth-panel">
-        <h1>Aquarium Catalog</h1>
+        <h1>Tankify</h1>
         <p className="tagline">Sign in to build and save your own tank.</p>
 
         {!firebaseConfigured && (

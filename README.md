@@ -1,4 +1,4 @@
-# Aquarium Catalog
+# Tankify
 
 **Live:** https://kristiyan-donchev.github.io/tankify/
 

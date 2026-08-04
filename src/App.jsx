@@ -9,6 +9,7 @@ import Credits from './components/Credits.jsx';
 import Forum from './components/Forum.jsx';
 import Profile from './components/Profile.jsx';
 import Settings from './components/Settings.jsx';
+import LoadingScreen from './components/LoadingScreen.jsx';
 import { useAuth } from './context/AuthContext.jsx';
 import { listTanks, createTank, renameTank, deleteTank, saveTank } from './lib/storage.js';
 
@@ -103,7 +104,7 @@ export default function App() {
   if (authLoading) {
     return (
       <div className="app">
-        <p className="empty-state">Loading…</p>
+        <LoadingScreen message="Loading…" />
       </div>
     );
   }
@@ -116,7 +117,7 @@ export default function App() {
     return (
       <div className="app">
         <Header />
-        <p className="empty-state">Loading your tanks…</p>
+        <LoadingScreen message="Loading your tanks…" />
       </div>
     );
   }
